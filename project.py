@@ -46,18 +46,19 @@ while run:
             gameScreen.blit(zombie1, (Rectwidth,Rectheight))
             Rectheight += VelEnemy
             
+            
         if Rectheight == 406 and Rectwidth == 1367:
             z4 = True
+            
         if z4:
-
-            gameScreen.blit(zombie1, (Rectwidth,Rectheight))
+            gameScreen.blit(pygame.transform.rotate(zombie1,-90),(Rectwidth,Rectheight))
             Rectwidth -= VelEnemy
             
         if Rectheight == 406 and Rectwidth == 1153:
             z5 = True
         if z5:
             z4 = False
-            gameScreen.blit(zombie1, (Rectwidth,Rectheight))
+            gameScreen.blit(pygame.transform.rotate(zombie1,180),(Rectwidth,Rectheight))
             Rectheight -= VelEnemy
             
         if Rectheight == 83 and Rectwidth == 1153:
@@ -66,7 +67,7 @@ while run:
             z5 = False
         if z1:
 
-            gameScreen.blit(zombie1, (Rectwidth,Rectheight))
+            gameScreen.blit(pygame.transform.rotate(zombie1,-90),(Rectwidth,Rectheight))
             Rectwidth -= VelEnemy
         if Rectheight == 83 and Rectwidth == 503:
             z2 = True
@@ -80,19 +81,19 @@ while run:
             z3 = True
             
         if z3:
-            gameScreen.blit(zombie1, (Rectwidth,Rectheight))
+            gameScreen.blit(pygame.transform.rotate(zombie1,90),(Rectwidth,Rectheight))
             Rectwidth += VelEnemy
         if Rectheight == 407 and Rectwidth == 719:
             z6 = True
             z3 = False  
         if z6:
-            gameScreen.blit(zombie1, (Rectwidth,Rectheight))
+            gameScreen.blit(pygame.transform.rotate(zombie1,180),(Rectwidth,Rectheight))
             Rectheight -= VelEnemy
         if Rectheight == 298 and Rectwidth == 719:
             z7 = True
             z6 = False
         if z7:
-            gameScreen.blit(zombie1, (Rectwidth,Rectheight))
+            gameScreen.blit(pygame.transform.rotate(zombie1,90),(Rectwidth,Rectheight))
             Rectwidth += VelEnemy
         if Rectheight == 298 and Rectwidth == 827:
             z8 = True
@@ -104,7 +105,7 @@ while run:
             z9 = True
             z8 = False
         if z9:
-            gameScreen.blit(zombie1, (Rectwidth,Rectheight))
+            gameScreen.blit(pygame.transform.rotate(zombie1,-90),(Rectwidth,Rectheight))
             Rectwidth -= VelEnemy
         if Rectheight == 623 and Rectwidth == 502:
             z10 = True
@@ -116,19 +117,19 @@ while run:
             z11 = True
             z10 = False
         if z11:
-            gameScreen.blit(zombie1, (Rectwidth,Rectheight))
+            gameScreen.blit(pygame.transform.rotate(zombie1,90),(Rectwidth,Rectheight))
             Rectwidth += VelEnemy
         if Rectheight == 840 and Rectwidth == 1043:
             z12 = True
             z11 = False
         if z12:
-            gameScreen.blit(zombie1, (Rectwidth,Rectheight))
+            gameScreen.blit(pygame.transform.rotate(zombie1,180),(Rectwidth,Rectheight))
             Rectheight -= VelEnemy
         if Rectheight == 623 and Rectwidth == 1043:
             z13 = True
             z12 = False
         if z13:
-            gameScreen.blit(zombie1, (Rectwidth,Rectheight))
+            gameScreen.blit(pygame.transform.rotate(zombie1,90),(Rectwidth,Rectheight))
             Rectwidth += VelEnemy
         if Rectheight == 623 and  Rectwidth == 1258:
             z14 = True
@@ -140,7 +141,7 @@ while run:
             z15 = True
             z14 = False
         if z15:
-            gameScreen.blit(zombie1, (Rectwidth,Rectheight))
+            gameScreen.blit(pygame.transform.rotate(zombie1,-90),(Rectwidth,Rectheight))
             Rectwidth -= VelEnemy
         if Rectwidth  == 400:
             cesta = False

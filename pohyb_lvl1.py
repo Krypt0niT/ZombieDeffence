@@ -1,11 +1,8 @@
 import pygame
-def pohyb_lvl1():
-
-    w = 1920
-    h = 1080
-
+def pohyb_lvl1(a):
+    
     pygame.init()
-    gameScreen = pygame.display.set_mode((w, h))
+    gameScreen = pygame.display.set_mode()
     clock = pygame.time.Clock()
 
     bg = pygame.image.load("hra_template.png")
@@ -17,72 +14,76 @@ def pohyb_lvl1():
 
     zombie1 = pygame.image.load('zombie_lvl1.png')
     zombie1.convert()
-    rect = zombie1.get_rect()
-    rect.center = (w//2, h//2)
-
+    
+    
+    #rychlost enemy
     VelEnemy = 1
 
     z1,z2,z3,z4,z5,z6,z7,z8,z9 = False,False,False,False,False,False,False,False,False
-    z10,z11,z12,z13,z14,z15 = False,False,False,False,False,False
+    z10,z11,z12,z13,z14,z15,z16 = False,False,False,False,False,False,False
 
 
-    cesta = True
+    move = True
     run = True
     while run:
+        
         clock.tick(120)
         gameScreen.blit(bg, (0, 0))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+                pygame.quit()
+                quit()
     
 
         
-        if cesta:
-            velkosť = 50
+        
+        velkosť = 50
+        if move:
             if Rectwidth == 1367:
                 gameScreen.blit(zombie1, (Rectwidth,Rectheight))
                 Rectheight += VelEnemy
                 
                 
             if Rectheight == 406 and Rectwidth == 1367:
-                z4 = True
+                z1 = True
                 
-            if z4:
+            if z1:
                 gameScreen.blit(pygame.transform.rotate(zombie1,-90),(Rectwidth,Rectheight))
                 Rectwidth -= VelEnemy
                 
             if Rectheight == 406 and Rectwidth == 1153:
-                z5 = True
-            if z5:
-                z4 = False
+                z2 = True
+            if z2:
+                z1 = False
                 gameScreen.blit(pygame.transform.rotate(zombie1,180),(Rectwidth,Rectheight))
                 Rectheight -= VelEnemy
                 
             if Rectheight == 83 and Rectwidth == 1153:
-                z1 = True  
+                z3 = True  
                 z2 = False
-                z5 = False
-            if z1:
+                z1 = False
+            if z3:
 
                 gameScreen.blit(pygame.transform.rotate(zombie1,-90),(Rectwidth,Rectheight))
                 Rectwidth -= VelEnemy
             if Rectheight == 83 and Rectwidth == 503:
-                z2 = True
-                z1 = False
+                z4 = True
+                z3 = False
 
-            if z2:
+            if z4:
                 gameScreen.blit(zombie1, (Rectwidth,Rectheight))
                 Rectheight += VelEnemy
             if Rectheight == 407 and Rectwidth == 503:
-                z2 = False
-                z3 = True
+                z4 = False
+                z5 = True
                 
-            if z3:
+            if z5:
                 gameScreen.blit(pygame.transform.rotate(zombie1,90),(Rectwidth,Rectheight))
                 Rectwidth += VelEnemy
             if Rectheight == 407 and Rectwidth == 719:
                 z6 = True
-                z3 = False  
+                z5 = False  
             if z6:
                 gameScreen.blit(pygame.transform.rotate(zombie1,180),(Rectwidth,Rectheight))
                 Rectheight -= VelEnemy
@@ -141,13 +142,15 @@ def pohyb_lvl1():
                 gameScreen.blit(pygame.transform.rotate(zombie1,-90),(Rectwidth,Rectheight))
                 Rectwidth -= VelEnemy
             if Rectwidth  == 400:
-                cesta = False
-
-
-
-
+                z16 = True
+            if z16:
+                move = False
+                z15 = False
+                run = False
+                
         print(Rectwidth,Rectheight)
+        print(a)
         pygame.display.flip()
+    
 
-    pygame.quit()
-    quit()
+    

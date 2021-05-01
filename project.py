@@ -5,6 +5,9 @@ import time
 pygame.init()
 gameScreen = pygame.display.set_mode((1920, 1080))
 clock = pygame.time.Clock()
+pygame.display.set_caption("Zombie Deffence")
+icon = pygame.image.load("zombie_lvl1.png")
+pygame.display.set_icon(icon)
 
 #terajšie pozadie
 bg = pygame.image.load("hra_template.png")

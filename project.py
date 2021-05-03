@@ -16,6 +16,10 @@ VelEnemy = 1
 a = 2
 kolo = True
 run = True
+#rozrobeny text HP
+font = pygame.font.Font("freesansbold.ttf", 32)
+HPtext = font.render("HP:", True , (255,255,255),(255,0,0))
+
 while run:
     clock.tick(120)
     for event in pygame.event.get():
@@ -24,7 +28,7 @@ while run:
             
     #vytvorenie pozadia pre gameScreen
     gameScreen.blit(bg, (0, 0))
-  
+    gameScreen.blit(HPtext,(900,900))
 
     
     if kolo:

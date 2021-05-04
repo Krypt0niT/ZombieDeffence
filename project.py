@@ -13,7 +13,7 @@ pygame.display.set_icon(icon)
 bg = pygame.image.load("hra_template.png")
 #rychlost
 VelEnemy = 1
-a = 2
+Enemy = 1
 kolo = True
 run = True
 #rozrobeny text HP
@@ -32,7 +32,6 @@ while run:
 
     
     if kolo:
-        pohyb_lvl1(a)
-        print("a")
+        pohyb_lvl1(Enemy)
 pygame.quit()
 quit()

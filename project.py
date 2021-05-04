@@ -11,9 +11,8 @@ pygame.display.set_icon(icon)
 
 #terajšie pozadie
 bg = pygame.image.load("hra_template.png")
-#rychlost
-VelEnemy = 1
-Enemy = 1
+
+Enemy = 25
 kolo = True
 run = True
 #rozrobeny text HP

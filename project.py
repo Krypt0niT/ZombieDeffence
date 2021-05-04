@@ -13,7 +13,7 @@ pygame.display.set_icon(icon)
 bg = pygame.image.load("hra_template.png")
 #rychlost
 VelEnemy = 1
-Enemy = 50
+Enemy = 1
 kolo = True
 run = True
 #rozrobeny text HP

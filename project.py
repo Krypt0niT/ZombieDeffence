@@ -12,7 +12,7 @@ pygame.display.set_icon(icon)
 #terajšie pozadie
 bg = pygame.image.load("hra_template.png")
 
-Enemy = 25
+Enemy = 5
 kolo = True
 run = True
 #rozrobeny text HP

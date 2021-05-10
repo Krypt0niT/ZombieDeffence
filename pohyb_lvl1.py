@@ -15,6 +15,9 @@ def pohyb_lvl1(Enemy):
     #ikona okna
     zombie1 = pygame.image.load('zombie_lvl1.png')
     zombie1.convert()
+    #ikona turret 1
+    turret = pygame.image.load("turret.png")
+    turret.convert()
     
     #list enemy
 
@@ -31,6 +34,8 @@ def pohyb_lvl1(Enemy):
     uhol = 0
     start = 0
 
+    turret1 = False
+
     while run:
         
         clock.tick(120)
@@ -42,9 +47,17 @@ def pohyb_lvl1(Enemy):
                 quit()
 
        
+
         if move:
+            if event.type == pygame.MOUSEBUTTONUP:
+                pos = pygame.mouse.get_pos()
+                if (0 <= pos[0]) and (pos[0] <= 420):
+                    if (0 <= pos[1]) and (pos[1] <= 216):
+                        print("obe platia")
+                        turret1 = True
 
 
+            
             test = 0
             for i in range(Enemy):
                 if E[test][0] == 1367 and (-100 <= E[test][1] <= 406):
@@ -217,12 +230,12 @@ def pohyb_lvl1(Enemy):
                     test += 1
             test = 0
             start += 1
-            if start == 100:
+            if start == 75:
                 start = 0
                 if len(E) > spustenie:
                     E[spustenie][6] = True
                     spustenie += 1
-            print(E)
-        #print(E)
+            gameScreen.blit(pygame.transform.rotate(turret,0),(700,100))
+
         pygame.display.flip()
     

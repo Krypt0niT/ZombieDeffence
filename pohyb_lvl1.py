@@ -1,5 +1,7 @@
 import pygame
 import multiprocessing
+
+from pygame.constants import K_LEFT
 def pohyb_lvl1(Enemy):
     
     pygame.init()
@@ -7,6 +9,9 @@ def pohyb_lvl1(Enemy):
     clock = pygame.time.Clock()
 
     bg = pygame.image.load("hra_template.png")
+    #font
+    basicFont = pygame.font.SysFont(None, 60)
+    
 
     #pohyb enemy
     Rectheight = -100
@@ -15,13 +20,17 @@ def pohyb_lvl1(Enemy):
     #ikona okna
     zombie1 = pygame.image.load('zombie_lvl1.png')
     zombie1.convert()
-    #ikona turret 1
+    # turret 1
     turret = pygame.image.load("turret.png")
+    turretRECT = turret.get_rect()
+    turretRECT.center = (25,45)
     turret.convert()
     
     #list enemy
 
     E = []
+    T = []
+
     for i in range(Enemy):
               #[x, y, alive, speed, HP, uhol, started]
         E.append([1367, -100, True, 1, 1, 0, False])
@@ -34,8 +43,10 @@ def pohyb_lvl1(Enemy):
     uhol = 0
     start = 0
 
-    turret1 = False
+    health = 100
 
+    Pturret1 = False
+    mouse_position = []
     while run:
         
         clock.tick(120)
@@ -46,18 +57,37 @@ def pohyb_lvl1(Enemy):
                 pygame.quit()
                 quit()
 
-       
+
+        if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+            pos = pygame.mouse.get_pos()
+            if (0 <= pos[0]) and (pos[0] <= 420):
+                if (0 <= pos[1]) and (pos[1] <= 216):
+                    print("obe platia")
+                    Pturret1 = True
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
+            Pturret1 = False
+
+        if Pturret1:
+            gameScreen.blit(pygame.transform.rotate(turret,0),((mouse_position[0] - 25),(mouse_position[1] - 45)))
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                T.append([mouse_position[0],mouse_position[1]])
+                Pturret1 = False
+
+        if event.type == pygame.MOUSEMOTION:
+            mouse_position = pygame.mouse.get_pos()
+            print(mouse_position)
+        test = 0
+        for i in range(len(T)):
+            gameScreen.blit(pygame.transform.rotate(turret,0),((T[test][0] - 25),(T[test][1] - 45)))
+            test += 1
+        test = 0
+
+        #ikony
+        gameScreen.blit(pygame.transform.rotate(turret,0),(185,63))
+
+
 
         if move:
-            if event.type == pygame.MOUSEBUTTONUP:
-                pos = pygame.mouse.get_pos()
-                if (0 <= pos[0]) and (pos[0] <= 420):
-                    if (0 <= pos[1]) and (pos[1] <= 216):
-                        print("obe platia")
-                        turret1 = True
-
-
-            
             test = 0
             for i in range(Enemy):
                 if E[test][0] == 1367 and (-100 <= E[test][1] <= 406):
@@ -212,7 +242,7 @@ def pohyb_lvl1(Enemy):
                     test += 1
             test = 0
             for i in range(Enemy):
-                if E[test][1] == 946 and (400 <= E[test][0] <= 1258):
+                if E[test][1] == 946 and (399 <= E[test][0] <= 1258):
                     if E[test][6] == True:
                         gameScreen.blit(pygame.transform.rotate(zombie1,E[test][5]),(E[test][0],E[test][1]))
                         E[test][0] -= E[test][3]
@@ -221,13 +251,14 @@ def pohyb_lvl1(Enemy):
                 else:
                     test += 1
             test = 0
+
             for i in range(Enemy):
                 if E[test][0]  == 400:
-                    if E[test][6] == True:
-                        E[test][6] == False
-                        test += 1
+                    health -= 1
+                    test += 1
                 else:
                     test += 1
+
             test = 0
             start += 1
             if start == 75:
@@ -235,7 +266,13 @@ def pohyb_lvl1(Enemy):
                 if len(E) > spustenie:
                     E[spustenie][6] = True
                     spustenie += 1
-            gameScreen.blit(pygame.transform.rotate(turret,0),(700,100))
 
+            #HP
+
+            text = basicFont.render(("Health: %s" % health) , True, (255,255,255))
+            gameScreen.blit(text, (1650, 1000))
+
+
+        print(T)    
         pygame.display.flip()
     

@@ -10,8 +10,7 @@ def pohyb_lvl1(Enemy):
 
     bg = pygame.image.load("hra_template.png")
     #font
-    basicFont = pygame.font.SysFont(None, 60)
-    
+    WHITEFont = pygame.font.Font("Dirty_War.otf", 50)
 
     #pohyb enemy
     Rectheight = -100
@@ -269,8 +268,9 @@ def pohyb_lvl1(Enemy):
 
             #HP
 
-            text = basicFont.render(("Health: %s" % health) , True, (255,255,255))
-            gameScreen.blit(text, (1650, 1000))
+            
+            HP_WHITE = WHITEFont.render(("Health: %s" % health) , True, (255,255,255))
+            gameScreen.blit(HP_WHITE, (1595, 1000))
 
 
         print(T)    

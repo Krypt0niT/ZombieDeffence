@@ -1,6 +1,8 @@
 import pygame
 import multiprocessing
 
+
+
 from pygame.constants import K_LEFT
 def pohyb_lvl1(Enemy):
     
@@ -65,12 +67,86 @@ def pohyb_lvl1(Enemy):
                     Pturret1 = True
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
             Pturret1 = False
-
+        #položenie turrety 1
         if Pturret1:
             gameScreen.blit(pygame.transform.rotate(turret,0),((mouse_position[0] - 25),(mouse_position[1] - 45)))
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-                T.append([mouse_position[0],mouse_position[1]])
-                Pturret1 = False
+                if (445 <= mouse_position[0] <= 1338):
+                    if(20 <= mouse_position[1] <= 50):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+                if (445 <= mouse_position[0] <= 473):
+                    if(50 <= mouse_position[1] <= 925):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+                if (474 <= mouse_position[0] <= 794):
+                    if(484 <= mouse_position[1] <= 591):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+                if (582 <= mouse_position[0] <= 1120):
+                    if(162 <= mouse_position[1] <= 269):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+                if (582 <= mouse_position[0] <= 687):
+                    if(319 <= mouse_position[1] <= 375):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+                #nefunguje
+                if (771 <= mouse_position[0] <= 819):
+                    if(453 <= mouse_position[1] <= 553):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+                if (582 <= mouse_position[0] <= 1010):
+                    if(700 <= mouse_position[1] <= 808):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+                if (474 <= mouse_position[0] <= 1227):
+                    if(910 <= mouse_position[1] <= 925):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+                if (1119 <= mouse_position[0] <= 1227):
+                    if(700 <= mouse_position[1] <= 866):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+                if (900 <= mouse_position[0] <= 1010):
+                    if(320 <= mouse_position[1] <= 649):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+                if (1010 <= mouse_position[0] <= 1120):
+                    if(320 <= mouse_position[1] <= 591):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+                if (1230 <= mouse_position[0] <= 1338):
+                    if(104 <= mouse_position[1] <= 375):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+                if (1447 <= mouse_position[0] <= 1474):
+                    if(25 <= mouse_position[1] <= 1055):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+                if (1171 <= mouse_position[0] <= 1396):
+                    if(484 <= mouse_position[1] <= 591):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+                if (1336 <= mouse_position[0] <= 1393):
+                    if(342 <= mouse_position[1] <= 1054):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+                if (445 <= mouse_position[0] <= 1285):
+                    if(974 <= mouse_position[1] <= 1054):
+                        T.append([mouse_position[0],mouse_position[1]])
+                        Pturret1 = False
+
+
+
+
+
+
+
+
+
+
+
 
         if event.type == pygame.MOUSEMOTION:
             mouse_position = pygame.mouse.get_pos()
@@ -269,10 +345,12 @@ def pohyb_lvl1(Enemy):
             #HP
 
             
-            HP_WHITE = WHITEFont.render(("Health: %s" % health) , True, (255,255,255))
-            gameScreen.blit(HP_WHITE, (1595, 1000))
+            #HP_WHITE = WHITEFont.render(("Health: %s" % health) , True, (255,255,255))
+            HP_WHITE = WHITEFont.render(("%s" % health) , True, (255,255,255))
+
+            gameScreen.blit(HP_WHITE, (1600, 1000))
 
 
-        print(T)    
+        print(T)
         pygame.display.flip()
     

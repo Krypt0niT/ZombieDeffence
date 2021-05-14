@@ -25,7 +25,6 @@ while run:
             
     #vytvorenie pozadia pre gameScreen
     gameScreen.blit(bg, (0, 0))
-
     
     if kolo:
         pohyb_lvl1(Enemy)

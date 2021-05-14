@@ -6,6 +6,8 @@ import multiprocessing
 from pygame.constants import K_LEFT
 def pohyb_lvl1(Enemy):
     
+
+    
     pygame.init()
     gameScreen = pygame.display.set_mode()
     clock = pygame.time.Clock()
@@ -45,6 +47,9 @@ def pohyb_lvl1(Enemy):
     start = 0
 
     health = 100
+    money = 350
+
+    cenaT1 = 100
 
     Pturret1 = False
     mouse_position = []
@@ -63,8 +68,11 @@ def pohyb_lvl1(Enemy):
             pos = pygame.mouse.get_pos()
             if (0 <= pos[0]) and (pos[0] <= 420):
                 if (0 <= pos[1]) and (pos[1] <= 216):
-                    print("obe platia")
-                    Pturret1 = True
+                    if money >= cenaT1:
+                        print("obe platia")
+                        Pturret1 = True
+                    #else:
+
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
             Pturret1 = False
         #položenie turrety 1
@@ -75,67 +83,83 @@ def pohyb_lvl1(Enemy):
                     if(20 <= mouse_position[1] <= 50):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
                 if (445 <= mouse_position[0] <= 473):
                     if(50 <= mouse_position[1] <= 925):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
                 if (474 <= mouse_position[0] <= 794):
                     if(484 <= mouse_position[1] <= 591):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
                 if (582 <= mouse_position[0] <= 1120):
                     if(162 <= mouse_position[1] <= 269):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
                 if (582 <= mouse_position[0] <= 687):
                     if(319 <= mouse_position[1] <= 375):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
                 #nefunguje
                 if (771 <= mouse_position[0] <= 819):
                     if(453 <= mouse_position[1] <= 553):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
                 if (582 <= mouse_position[0] <= 1010):
                     if(700 <= mouse_position[1] <= 808):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
                 if (474 <= mouse_position[0] <= 1227):
                     if(910 <= mouse_position[1] <= 925):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
                 if (1119 <= mouse_position[0] <= 1227):
                     if(700 <= mouse_position[1] <= 866):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
                 if (900 <= mouse_position[0] <= 1010):
                     if(320 <= mouse_position[1] <= 649):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
                 if (1010 <= mouse_position[0] <= 1120):
                     if(320 <= mouse_position[1] <= 591):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
                 if (1230 <= mouse_position[0] <= 1338):
                     if(104 <= mouse_position[1] <= 375):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
                 if (1447 <= mouse_position[0] <= 1474):
                     if(25 <= mouse_position[1] <= 1055):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
                 if (1171 <= mouse_position[0] <= 1396):
                     if(484 <= mouse_position[1] <= 591):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
                 if (1336 <= mouse_position[0] <= 1393):
                     if(342 <= mouse_position[1] <= 1054):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
                 if (445 <= mouse_position[0] <= 1285):
                     if(974 <= mouse_position[1] <= 1054):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
+                        money -= cenaT1 
 
 
 
@@ -346,9 +370,11 @@ def pohyb_lvl1(Enemy):
 
             
             #HP_WHITE = WHITEFont.render(("Health: %s" % health) , True, (255,255,255))
-            HP_WHITE = WHITEFont.render(("%s" % health) , True, (255,255,255))
+            textHelth = WHITEFont.render(("%s" % health) , True, (255,255,255))
+            textMoney = WHITEFont.render(("%s" % money) , True, (255,255,255))
 
-            gameScreen.blit(HP_WHITE, (1600, 1000))
+            gameScreen.blit(textHelth, (1600, 1000))
+            gameScreen.blit(textMoney, (1600, 900))
 
 
         print(T)

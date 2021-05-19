@@ -47,7 +47,7 @@ def pohyb_lvl1(Enemy):
     start = 0
 
     health = 100
-    money = 350
+    money = 10000
 
     cenaT1 = 100
 
@@ -100,18 +100,17 @@ def pohyb_lvl1(Enemy):
                         Pturret1 = False
                         money -= cenaT1 
                 if (582 <= mouse_position[0] <= 687):
-                    if(319 <= mouse_position[1] <= 375):
+                    if(270 <= mouse_position[1] <= 375):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
                         money -= cenaT1 
-                #nefunguje
                 if (771 <= mouse_position[0] <= 819):
-                    if(453 <= mouse_position[1] <= 553):
+                    if(353 <= mouse_position[1] <= 484):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
                         money -= cenaT1 
                 if (582 <= mouse_position[0] <= 1010):
-                    if(700 <= mouse_position[1] <= 808):
+                    if(650 <= mouse_position[1] <= 808):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
                         money -= cenaT1 
@@ -121,22 +120,22 @@ def pohyb_lvl1(Enemy):
                         Pturret1 = False
                         money -= cenaT1 
                 if (1119 <= mouse_position[0] <= 1227):
-                    if(700 <= mouse_position[1] <= 866):
+                    if(700 <= mouse_position[1] <= 909):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
                         money -= cenaT1 
                 if (900 <= mouse_position[0] <= 1010):
-                    if(320 <= mouse_position[1] <= 649):
+                    if(270 <= mouse_position[1] <= 649):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
                         money -= cenaT1 
-                if (1010 <= mouse_position[0] <= 1120):
-                    if(320 <= mouse_position[1] <= 591):
+                if (1011 <= mouse_position[0] <= 1120):
+                    if(270 <= mouse_position[1] <= 591):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
                         money -= cenaT1 
                 if (1230 <= mouse_position[0] <= 1338):
-                    if(104 <= mouse_position[1] <= 375):
+                    if(51 <= mouse_position[1] <= 375):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
                         money -= cenaT1 
@@ -145,13 +144,13 @@ def pohyb_lvl1(Enemy):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
                         money -= cenaT1 
-                if (1171 <= mouse_position[0] <= 1396):
+                if (1121 <= mouse_position[0] <= 1446):
                     if(484 <= mouse_position[1] <= 591):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
                         money -= cenaT1 
-                if (1336 <= mouse_position[0] <= 1393):
-                    if(342 <= mouse_position[1] <= 1054):
+                if (1286 <= mouse_position[0] <= 1446):
+                    if(592 <= mouse_position[1] <= 1054):
                         T.append([mouse_position[0],mouse_position[1]])
                         Pturret1 = False
                         money -= cenaT1 

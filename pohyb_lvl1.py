@@ -134,7 +134,7 @@ def pohyb_lvl1(Enemy):
     textcenaT42 = WHITEFont.render("1000" , True, (255,255,255))
 
     textcenaT13 = WHITEFont.render("1500" , True, (255,255,255))
-    textcenaT23 = WHITEFont.render("1000" , True, (255,255,255))
+    textcenaT23 = WHITEFont.render("1500" , True, (255,255,255))
     textcenaT33 = WHITEFont.render("1000" , True, (255,255,255))
     textcenaT43 = WHITEFont.render("1000" , True, (255,255,255))
     maxtext = WHITEFont.render("MAX" , True, (255,255,255))

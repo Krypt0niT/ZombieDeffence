@@ -107,7 +107,6 @@ def pohyb_lvl1(Enemy):
 
     for i in range(Enemy):
         randomZ = random.randint(1,5)
-        print(randomZ)
               #[x, y, alive, speed, HP, uhol, started, type]
         if randomZ == 1:
             E.append([1367, -100, True, 1, 1, 0, False, zombie1_1])
@@ -151,6 +150,17 @@ def pohyb_lvl1(Enemy):
     Pturret11 = False
     mouse_position = []
 
+    #turret place location
+    TPL = [(445,1338,20,50),(445,473,50,925),(474,794,484,591),(582,1120,162,269),(582,687,270,375),(771,819,353,484),(582,1010,650,808),(474,1227,910,925),
+        (1119,1227,700,909),(900,1010,270,649),(1011,1120,270,591),(1230,1338,51,375),(1447,1474,25,1055),(1121,1446,484,591),(1286,1446,592,1054),
+        (445,1285,974,1054)]
+
+    
+        #trasa
+    EnemyTrack = [(-100,406,1367,0),(406,1153,1367,-90),(81,406,1153,180),(83,503,1153,-90),(83,407,503,0),
+        (407,503,719,90),(298,407,719,180),(298,827,719,90),(298,623,827,0),(623,502,827,-90),(840,623,502,0),
+        (840,1043,502,90),(840,623,1043,180),(623,1258,1043,90),(946,623,1258,0),(946,399,1258,-90)]
+
     textcenaT11 = WHITEFont.render("100" , True, (255,255,255))
     textcenaT21 = WHITEFont.render("250" , True, (255,255,255))
     textcenaT31 = WHITEFont.render("400" , True, (255,255,255))
@@ -165,6 +175,13 @@ def pohyb_lvl1(Enemy):
     textcenaT33 = WHITEFont.render("1000" , True, (255,255,255))
     textcenaT43 = WHITEFont.render("1000" , True, (255,255,255))
     maxtext = WHITEFont.render("MAX" , True, (255,255,255))
+
+    Trange = pygame.image.load("images/other/range.png")
+    TrangeRECT = Trange.get_rect()
+    TrangeRECT.center = (150,150)
+    Trange.convert()
+
+
 
     while run:
         
@@ -187,7 +204,7 @@ def pohyb_lvl1(Enemy):
                     #else:
         for i in range(len(T)):
             if T[i][2] == True:
-                pygame.draw.circle(gameScreen, (255, 0, 0), ((T[i][0]),(T[i][1])), 150 , 0)
+                gameScreen.blit(pygame.transform.rotate(Trange,0),((T[i][0]-150),(T[i][1]-150)))
                 if T[i][3] == 11:
                     gameScreen.blit(pygame.transform.rotate(turret21,0),(1700,63))
                     gameScreen.blit(textcenaT21, (1800, 150))
@@ -253,6 +270,12 @@ def pohyb_lvl1(Enemy):
                     gameScreen.blit(maxtext, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
+                if (T[i][0]+25) >= mouse_position[0] >= (T[i][0]-25) and (T[i][1]+25) >= mouse_position[1] >= (T[i][1]-25):
+                    if event.type == pygame.MOUSEBUTTONUP:
+                        T[i][2] = True
+                else:
+                    if event.type == pygame.MOUSEBUTTONUP:   
+                        T[i][2] = False
 
                 if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                     pos = pygame.mouse.get_pos()
@@ -354,28 +377,17 @@ def pohyb_lvl1(Enemy):
         for i in range(len(T)):
             if (T[i][0]+25) >= mouse_position[0] >= (T[i][0]-25) and (T[i][1]+25) >= mouse_position[1] >= (T[i][1]-25):
                 if event.type == pygame.MOUSEBUTTONUP:
-
                     T[i][2] = True
-                    
-
-                i += 1
             else:
-                if event.type == pygame.MOUSEBUTTONUP:
-
-                        
+                if event.type == pygame.MOUSEBUTTONUP:   
                     T[i][2] = False
 
-                    i += 1
-        i = 0
 
 
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
             Pturret11 = False
         #položenie turrety 11
-        #turret place location
-        TPL = [(445,1338,20,50),(445,473,50,925),(474,794,484,591),(582,1120,162,269),(582,687,270,375),(771,819,353,484),(582,1010,650,808),(474,1227,910,925),
-        (1119,1227,700,909),(900,1010,270,649),(1011,1120,270,591),(1230,1338,51,375),(1447,1474,25,1055),(1121,1446,484,591),(1286,1446,592,1054),
-        (445,1285,974,1054)]
+        
 
         if Pturret11:
             gameScreen.blit(pygame.transform.rotate(turret11,0),((mouse_position[0] - 25),(mouse_position[1] - 45)))
@@ -385,8 +397,8 @@ def pohyb_lvl1(Enemy):
                 for i in range(16):
                     if (TPL[i][0] <= mouse_position[0] <= TPL[i][1]):
                         if(TPL[i][2] <= mouse_position[1] <= TPL[i][3]):
-                            T.append([mouse_position[0], mouse_position[1], False, 11, 1, 1])
-                            #                x         ,       y       , selected, type, speed, dmg
+                            T.append([mouse_position[0], mouse_position[1], False, 11, 1, 1, -1, False])
+                            #                x      ,       y       , selected, type, speed, dmg, locked enemy, locked
                             Pturret11 = False
                             money -= cenaT11
 
@@ -421,29 +433,47 @@ def pohyb_lvl1(Enemy):
                 gameScreen.blit(pygame.transform.rotate(turret43,0),((T[i][0] - 25),(T[i][1] - 45)))
 
 
-        #turrets rotation
+       
         
-        #ikony
-        gameScreen.blit(pygame.transform.rotate(turret11,0),(185,63))
-
-
-
+        
+        test = 0
         if move:
 
             for i in range(Enemy):
-                if E[i][0] == 1367 and (-100 <= E[i][1] <= 406):
+                if (EnemyTrack[test][0] <= E[i][1] <= EnemyTrack[test][1]) and E[i][0] == EnemyTrack[test][2]:
                     if E[i][6] == True:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][1] += E[i][3]
-                        E[i][5] = 0
-  
+                        E[i][5] = EnemyTrack[test][3]
+                for j in range(len(T)):
 
+
+                        if (T[j][0]-150) <= E[i][0] <= (T[j][0]+150) and (T[j][1]-150) <= E[i][1] <= (T[j][1]+150):
+                               if T[j][7] == False:
+                                    T[j][6] = i
+                                    T[j][7] = True
+                                    #if T[j][6] 
+                        if T[j][7] == True:
+                            if (T[j][0]-150) <= E[T[j][6]][0] <= (T[j][0]+150) and (T[j][1]-150) <= E[T[j][6]][1] <= (T[j][1]+150):
+                                print("")
+                            else:
+                                T[j][7] = False
+                                T[j][6] = -1
+             
+            
+
+
+
+
+            test += 1
             for i in range(Enemy):
-                if (1153 <= E[i][0] <= 1367) and E[i][1] == 406:
+                if E[i][1] == EnemyTrack[test][0] and (EnemyTrack[test][1] <= E[i][0] <= EnemyTrack[test][2]):
                     if E[i][6] == True:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][0] -= E[i][3]
-                        E[i][5] = -90
+                        E[i][5] = EnemyTrack[test][3]
+                            
+
 
 
             for i in range(Enemy):
@@ -558,7 +588,8 @@ def pohyb_lvl1(Enemy):
                     spustenie += 1
 
             #HP
-
+            #ikony
+            gameScreen.blit(pygame.transform.rotate(turret11,0),(185,63))
             
             #HP_WHITE = WHITEFont.render(("Health: %s" % health) , True, (255,255,255))
             textHelth = WHITEFont.render(("%s" % health) , True, (255,255,255))
@@ -569,8 +600,5 @@ def pohyb_lvl1(Enemy):
             gameScreen.blit(textMoney, (1600, 900))
             gameScreen.blit(textcenaT11, (300, 150))
 
-
-
-            
 
         pygame.display.flip()

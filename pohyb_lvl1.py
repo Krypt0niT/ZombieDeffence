@@ -1,7 +1,7 @@
 import pygame
 import multiprocessing
 import random
-
+import math
 
 
 from pygame.constants import K_LEFT
@@ -397,8 +397,8 @@ def pohyb_lvl1(Enemy):
                 for i in range(16):
                     if (TPL[i][0] <= mouse_position[0] <= TPL[i][1]):
                         if(TPL[i][2] <= mouse_position[1] <= TPL[i][3]):
-                            T.append([mouse_position[0], mouse_position[1], False, 11, 1, 1, -1, False])
-                            #                x      ,       y       , selected, type, speed, dmg, locked enemy, locked
+                            T.append([mouse_position[0], mouse_position[1], False, 11, 1, 1, 999, False, 0])
+                            #                x      ,       y       , selected, type, speed, dmg, locked enemy, locked, UHOL
                             Pturret11 = False
                             money -= cenaT11
 
@@ -408,29 +408,29 @@ def pohyb_lvl1(Enemy):
 
         for i in range(len(T)):
             if T[i][3] == 11:
-                gameScreen.blit(pygame.transform.rotate(turret11,0),((T[i][0] - 25),(T[i][1] - 45)))
+                gameScreen.blit(pygame.transform.rotate(turret11,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
             if T[i][3] == 21:
-                gameScreen.blit(pygame.transform.rotate(turret21,0),((T[i][0] - 25),(T[i][1] - 45)))
+                gameScreen.blit(pygame.transform.rotate(turret21,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
             if T[i][3] == 31:
-                gameScreen.blit(pygame.transform.rotate(turret31,0),((T[i][0] - 25),(T[i][1] - 45)))
+                gameScreen.blit(pygame.transform.rotate(turret31,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
             if T[i][3] == 41:
-                gameScreen.blit(pygame.transform.rotate(turret41,0),((T[i][0] - 25),(T[i][1] - 45)))
+                gameScreen.blit(pygame.transform.rotate(turret41,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
             if T[i][3] == 42:
-                gameScreen.blit(pygame.transform.rotate(turret42,0),((T[i][0] - 25),(T[i][1] - 45)))
+                gameScreen.blit(pygame.transform.rotate(turret42,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
             if T[i][3] == 12:
-                gameScreen.blit(pygame.transform.rotate(turret12,0),((T[i][0] - 25),(T[i][1] - 45)))
+                gameScreen.blit(pygame.transform.rotate(turret12,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
             if T[i][3] == 22:
-                gameScreen.blit(pygame.transform.rotate(turret22,0),((T[i][0] - 25),(T[i][1] - 45)))
+                gameScreen.blit(pygame.transform.rotate(turret22,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
             if T[i][3] == 32:
-                gameScreen.blit(pygame.transform.rotate(turret32,0),((T[i][0] - 25),(T[i][1] - 45)))
+                gameScreen.blit(pygame.transform.rotate(turret32,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
             if T[i][3] == 13:
-                gameScreen.blit(pygame.transform.rotate(turret13,0),((T[i][0] - 25),(T[i][1] - 45)))
+                gameScreen.blit(pygame.transform.rotate(turret13,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
             if T[i][3] == 23:
-                gameScreen.blit(pygame.transform.rotate(turret23,0),((T[i][0] - 25),(T[i][1] - 45)))
+                gameScreen.blit(pygame.transform.rotate(turret23,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
             if T[i][3] == 33:
-                gameScreen.blit(pygame.transform.rotate(turret33,0),((T[i][0] - 25),(T[i][1] - 45)))
+                gameScreen.blit(pygame.transform.rotate(turret33,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
             if T[i][3] == 43:
-                gameScreen.blit(pygame.transform.rotate(turret43,0),((T[i][0] - 25),(T[i][1] - 45)))
+                gameScreen.blit(pygame.transform.rotate(turret43,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
 
 
        
@@ -454,11 +454,14 @@ def pohyb_lvl1(Enemy):
                                     T[j][7] = True
                                     #if T[j][6] 
                         if T[j][7] == True:
+                            T[j][8] = math.degrees(math.atan2(-((E[T[j][6]][0]-25) - T[j][0]),((E[T[j][6]][1]-44) - T[j][1]))) -90
+
+
                             if (T[j][0]-150) <= E[T[j][6]][0] <= (T[j][0]+150) and (T[j][1]-150) <= E[T[j][6]][1] <= (T[j][1]+150):
                                 print("")
                             else:
                                 T[j][7] = False
-                                T[j][6] = -1
+                                T[j][6] = 999
              
             
 

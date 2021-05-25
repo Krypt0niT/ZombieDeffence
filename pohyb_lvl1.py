@@ -107,17 +107,17 @@ def pohyb_lvl1(Enemy):
 
     for i in range(Enemy):
         randomZ = random.randint(1,5)
-              #[x, y, alive, speed, HP, uhol, started, type]
+              #[x, y, alive, speed, MaxHP, uhol, started, type, HP]
         if randomZ == 1:
-            E.append([1367, -100, True, 1, 1, 0, False, zombie1_1])
+            E.append([1367, -100, True, 1, 2, 0, False, zombie1_1, 2])
         if randomZ == 2:
-            E.append([1367, -100, True, 1, 1, 0, False, zombie1_2])
+            E.append([1367, -100, True, 1, 2, 0, False, zombie1_2, 1])
         if randomZ == 3:
-            E.append([1367, -100, True, 1, 1, 0, False, zombie1_3])
+            E.append([1367, -100, True, 1, 2, 0, False, zombie1_3, 1.5])
         if randomZ == 4:
-            E.append([1367, -100, True, 1, 1, 0, False, zombie1_4])
+            E.append([1367, -100, True, 1, 2, 0, False, zombie1_4, 2])
         if randomZ == 5:
-            E.append([1367, -100, True, 1, 1, 0, False, zombie1_5])
+            E.append([1367, -100, True, 1, 2, 0, False, zombie1_5, 2])
 
     spustenie = 0
 
@@ -180,6 +180,10 @@ def pohyb_lvl1(Enemy):
     TrangeRECT = Trange.get_rect()
     TrangeRECT.center = (150,150)
     Trange.convert()
+
+    #farby
+    liteGreen = (0,255,0)
+
 
 
 
@@ -457,7 +461,7 @@ def pohyb_lvl1(Enemy):
                             ex , ey = E[T[j][6]][0] ,E[T[j][6]][1]
                             dx , dy = ex - ((T[j][0])), ey -((T[j][1]))
                             T[j][8] = math.degrees(math.atan2(-dy,dx)) -90
-                            #T[j][8] = math.degrees(math.atan2(-((E[T[j][6]][0]-25) - T[j][0]),(((E[T[j][6]][1]+44)) - T[j][1]))) + 270
+                            
 
 
                             if (T[j][0]-150) <= E[T[j][6]][0] <= (T[j][0]+150) and (T[j][1]-150) <= E[T[j][6]][1] <= (T[j][1]+150):
@@ -465,8 +469,27 @@ def pohyb_lvl1(Enemy):
                             else:
                                 T[j][7] = False
                                 T[j][6] = 999
-             
-            
+                dorovnavanie = 20
+                HP = 40
+                #v PX
+                if E[i][5] == 180 or E[i][5] == 0:
+                    if E[i][8] != E[i][4]:
+                        print("hitted")
+                        cHP = E[i][4]/E[i][8]
+                        pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((E[i][0] + 4,E[i][1] - dorovnavanie),(HP/cHP,10)),)
+                    else:
+                        pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((E[i][0] + 4,E[i][1] - dorovnavanie),(HP,10)),)
+                    pygame.draw.rect(gameScreen, (0,0,0), pygame.Rect((E[i][0] + 4,E[i][1] - dorovnavanie),(HP,10)), 2)
+                cHP = 1
+                if E[i][5] == 90 or E[i][5] == -90:
+                    if E[i][8] != E[i][4]:
+                        print("hitted")
+                        cHP = E[i][4]/E[i][8]
+                        pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((E[i][0],E[i][1] - dorovnavanie),(HP/cHP,10)),)
+                    else:
+                        pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((E[i][0],E[i][1] - dorovnavanie),(HP,10)),)
+                    pygame.draw.rect(gameScreen, (0,0,0), pygame.Rect((E[i][0],E[i][1] - dorovnavanie),(HP,10)), 2)
+                cHP = 1
 
 
 

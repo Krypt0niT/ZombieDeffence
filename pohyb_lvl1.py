@@ -312,7 +312,7 @@ def pohyb_lvl1(Enemy):
                                 money -= cenaT42
                         elif T[i][3] == 23:
                             if money >= cenaT32:
-                                T[i][3] = 32
+                                T[i][3] = 33
                                 T[i][5] = 3
                                 money -= cenaT32
                         elif T[i][3] == 33:
@@ -454,7 +454,10 @@ def pohyb_lvl1(Enemy):
                                     T[j][7] = True
                                     #if T[j][6] 
                         if T[j][7] == True:
-                            T[j][8] = math.degrees(math.atan2(-((E[T[j][6]][0]-25) - T[j][0]),((E[T[j][6]][1]-44) - T[j][1]))) -90
+                            ex , ey = E[T[j][6]][0] ,E[T[j][6]][1]
+                            dx , dy = ex - ((T[j][0])), ey -((T[j][1]))
+                            T[j][8] = math.degrees(math.atan2(-dy,dx)) -90
+                            #T[j][8] = math.degrees(math.atan2(-((E[T[j][6]][0]-25) - T[j][0]),(((E[T[j][6]][1]+44)) - T[j][1]))) + 270
 
 
                             if (T[j][0]-150) <= E[T[j][6]][0] <= (T[j][0]+150) and (T[j][1]-150) <= E[T[j][6]][1] <= (T[j][1]+150):

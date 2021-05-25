@@ -185,7 +185,7 @@ def pohyb_lvl1(Enemy):
     liteGreen = (0,255,0)
 
 
-
+    playbutton = pygame.image.load("images/other/play.png")
 
     while run:
         
@@ -196,6 +196,11 @@ def pohyb_lvl1(Enemy):
                 run = False
                 pygame.quit()
                 quit()
+
+        #playbutton
+        gameScreen.blit(playbutton,(1508,656))
+
+        
 
 
         if event.type == pygame.MOUSEBUTTONUP and event.button == 1:

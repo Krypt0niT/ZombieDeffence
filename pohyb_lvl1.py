@@ -16,7 +16,7 @@ def pohyb_lvl1(Enemy):
     bg = pygame.image.load("hra_template.png")
     #font
     WHITEFont = pygame.font.Font("Dirty_War.otf", 50)
-
+    whitefont = pygame.font.Font("Dirty_War.otf", 20)
     #pohyb enemy
     Rectheight = -100
     Rectwidth = 1367
@@ -219,66 +219,92 @@ def pohyb_lvl1(Enemy):
                     gameScreen.blit(textcenaT21, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret12,0),(1700,279))
                     gameScreen.blit(textcenaT12, (1800, 366))
+                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
                 if T[i][3] == 21:
                     gameScreen.blit(pygame.transform.rotate(turret31,0),(1700,63))
                     gameScreen.blit(textcenaT31, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret22,0),(1700,279))
                     gameScreen.blit(textcenaT22, (1800, 366))
+                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
                 if T[i][3] == 31:
                     gameScreen.blit(pygame.transform.rotate(turret41,0),(1700,63))
                     gameScreen.blit(textcenaT41, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret32,0),(1700,279))
                     gameScreen.blit(textcenaT32, (1800, 366))
+                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
                 if T[i][3] == 41:
                     gameScreen.blit(pygame.transform.rotate(turret41,0),(1700,63))
                     gameScreen.blit(maxtext, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret42,0),(1700,279))
                     gameScreen.blit(textcenaT42, (1800, 366))
+                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
                 if T[i][3] == 12:
                     gameScreen.blit(pygame.transform.rotate(turret22,0),(1700,63))
                     gameScreen.blit(textcenaT22, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret13,0),(1700,279))
                     gameScreen.blit(textcenaT13, (1800, 366))
+                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
                 if T[i][3] == 22:
                     gameScreen.blit(pygame.transform.rotate(turret32,0),(1700,63))
                     gameScreen.blit(textcenaT32, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret13,0),(1700,279))
                     gameScreen.blit(textcenaT13, (1800, 366))
+                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
                 if T[i][3] == 32:
                     gameScreen.blit(pygame.transform.rotate(turret42,0),(1700,63))
                     gameScreen.blit(textcenaT42, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,279))
                     gameScreen.blit(textcenaT33, (1800, 366))
+                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
                 if T[i][3] == 22:
                     gameScreen.blit(pygame.transform.rotate(turret32,0),(1700,63))
                     gameScreen.blit(textcenaT32, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret23,0),(1700,279))
                     gameScreen.blit(textcenaT23, (1800, 366))
+                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
                 if T[i][3] == 42:
                     gameScreen.blit(pygame.transform.rotate(turret42,0),(1700,63))
                     gameScreen.blit(maxtext, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret43,0),(1700,279))
                     gameScreen.blit(textcenaT43, (1800, 366))
+                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
                 if T[i][3] == 13:
                     gameScreen.blit(pygame.transform.rotate(turret23,0),(1700,63))
                     gameScreen.blit(textcenaT23, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret13,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
+                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
                 if T[i][3] == 23:
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,63))
                     gameScreen.blit(textcenaT33, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret23,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
+                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
                 if T[i][3] == 33:
                     gameScreen.blit(pygame.transform.rotate(turret43,0),(1700,63))
                     gameScreen.blit(textcenaT43, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
+                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
                 if T[i][3] == 43:
                     gameScreen.blit(pygame.transform.rotate(turret43,0),(1700,63))
                     gameScreen.blit(maxtext, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
+                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
                 if (T[i][0]+25) >= mouse_position[0] >= (T[i][0]-25) and (T[i][1]+25) >= mouse_position[1] >= (T[i][1]-25):
                     if event.type == pygame.MOUSEBUTTONUP:
                         T[i][2] = True

@@ -472,24 +472,25 @@ def pohyb_lvl1(Enemy):
                 dorovnavanie = 20
                 HP = 40
                 #v PX
-                if E[i][5] == 180 or E[i][5] == 0:
-                    if E[i][8] != E[i][4]:
-                        print("hitted")
-                        cHP = E[i][4]/E[i][8]
-                        pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((E[i][0] + 4,E[i][1] - dorovnavanie),(HP/cHP,10)),)
-                    else:
-                        pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((E[i][0] + 4,E[i][1] - dorovnavanie),(HP,10)),)
-                    pygame.draw.rect(gameScreen, (0,0,0), pygame.Rect((E[i][0] + 4,E[i][1] - dorovnavanie),(HP,10)), 2)
-                cHP = 1
-                if E[i][5] == 90 or E[i][5] == -90:
-                    if E[i][8] != E[i][4]:
-                        print("hitted")
-                        cHP = E[i][4]/E[i][8]
-                        pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((E[i][0],E[i][1] - dorovnavanie),(HP/cHP,10)),)
-                    else:
-                        pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((E[i][0],E[i][1] - dorovnavanie),(HP,10)),)
-                    pygame.draw.rect(gameScreen, (0,0,0), pygame.Rect((E[i][0],E[i][1] - dorovnavanie),(HP,10)), 2)
-                cHP = 1
+                if E[i][2] == True:
+                    if E[i][5] == 180 or E[i][5] == 0:
+                        if E[i][8] != E[i][4]:
+                            print("hitted")
+                            cHP = E[i][4]/E[i][8]
+                            pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((E[i][0] + 4,E[i][1] - dorovnavanie),(HP/cHP,10)),)
+                        else:
+                            pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((E[i][0] + 4,E[i][1] - dorovnavanie),(HP,10)),)
+                        pygame.draw.rect(gameScreen, (0,0,0), pygame.Rect((E[i][0] + 4,E[i][1] - dorovnavanie),(HP,10)), 2)
+                    cHP = 1
+                    if E[i][5] == 90 or E[i][5] == -90:
+                        if E[i][8] != E[i][4]:
+                            print("hitted")
+                            cHP = E[i][4]/E[i][8]
+                            pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((E[i][0],E[i][1] - dorovnavanie),(HP/cHP,10)),)
+                        else:
+                            pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((E[i][0],E[i][1] - dorovnavanie),(HP,10)),)
+                        pygame.draw.rect(gameScreen, (0,0,0), pygame.Rect((E[i][0],E[i][1] - dorovnavanie),(HP,10)), 2)
+                    cHP = 1
 
 
 
@@ -606,6 +607,7 @@ def pohyb_lvl1(Enemy):
             for i in range(Enemy):
                 if E[i][0]  == 400:
                     health -= 1
+                    E[i][2] = False
 
 
 

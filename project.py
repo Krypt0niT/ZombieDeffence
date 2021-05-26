@@ -12,7 +12,7 @@ pygame.display.set_icon(icon)
 #terajšie pozadie
 bg = pygame.image.load("hra_template.png")
 
-Enemy = 5
+Enemy = 2
 kolo = True
 run = True
 

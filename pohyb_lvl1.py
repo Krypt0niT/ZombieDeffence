@@ -5,6 +5,7 @@ import math
 
 
 from pygame.constants import K_LEFT
+from pygame.rect import Rect
 def pohyb_lvl1(Enemy):
     
 
@@ -17,9 +18,7 @@ def pohyb_lvl1(Enemy):
     #font
     WHITEFont = pygame.font.Font("Dirty_War.otf", 50)
     whitefont = pygame.font.Font("Dirty_War.otf", 20)
-    #pohyb enemy
-    Rectheight = -100
-    Rectwidth = 1367
+
     
     #ikona okna
     zombie1_1 = pygame.image.load('images/zombie/zombie_lvl1_1.png')
@@ -103,6 +102,16 @@ def pohyb_lvl1(Enemy):
     E = []
     T = []
 
+    wave = 2
+    
+
+
+
+
+
+
+
+
     randomZ = 0
 
     for i in range(Enemy):
@@ -161,6 +170,10 @@ def pohyb_lvl1(Enemy):
         (407,503,719,90),(298,407,719,180),(298,827,719,90),(298,623,827,0),(623,502,827,-90),(840,623,502,0),
         (840,1043,502,90),(840,623,1043,180),(623,1258,1043,90),(946,623,1258,0),(946,399,1258,-90)]
 
+    #vykreslovanie turriet list
+    Tblit = [(11,turret11),(21,turret21),(31,turret31),(41,turret41),(42,turret42),(12,turret12),(22,turret22),
+        (32,turret32),(13,turret13),(23,turret23),(33,turret33),(43,turret43)]
+
     textcenaT11 = WHITEFont.render("100" , True, (255,255,255))
     textcenaT21 = WHITEFont.render("250" , True, (255,255,255))
     textcenaT31 = WHITEFont.render("400" , True, (255,255,255))
@@ -199,7 +212,19 @@ def pohyb_lvl1(Enemy):
 
         #playbutton
         gameScreen.blit(playbutton,(1508,656))
+        #ikona T
+        gameScreen.blit(pygame.transform.rotate(turret11,0),(185,63))
+        #texty
 
+        textHelth = WHITEFont.render(("%s" % health) , True, (255,255,255))
+        textMoney = WHITEFont.render(("%s" % money) , True, (255,255,255))
+
+
+        gameScreen.blit(textHelth, (1600, 1000))
+        gameScreen.blit(textMoney, (1600, 900))
+        gameScreen.blit(textcenaT11, (300, 150))
+
+        
         
 
 
@@ -220,91 +245,106 @@ def pohyb_lvl1(Enemy):
                     gameScreen.blit(pygame.transform.rotate(turret12,0),(1700,279))
                     gameScreen.blit(textcenaT12, (1800, 366))
                     gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
+                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 21:
                     gameScreen.blit(pygame.transform.rotate(turret31,0),(1700,63))
                     gameScreen.blit(textcenaT31, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret22,0),(1700,279))
                     gameScreen.blit(textcenaT22, (1800, 366))
                     gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
+                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 31:
                     gameScreen.blit(pygame.transform.rotate(turret41,0),(1700,63))
                     gameScreen.blit(textcenaT41, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret32,0),(1700,279))
                     gameScreen.blit(textcenaT32, (1800, 366))
                     gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
+                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 41:
                     gameScreen.blit(pygame.transform.rotate(turret41,0),(1700,63))
                     gameScreen.blit(maxtext, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret42,0),(1700,279))
                     gameScreen.blit(textcenaT42, (1800, 366))
                     gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
+                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 12:
                     gameScreen.blit(pygame.transform.rotate(turret22,0),(1700,63))
                     gameScreen.blit(textcenaT22, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret13,0),(1700,279))
                     gameScreen.blit(textcenaT13, (1800, 366))
                     gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
+                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 22:
                     gameScreen.blit(pygame.transform.rotate(turret32,0),(1700,63))
                     gameScreen.blit(textcenaT32, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret13,0),(1700,279))
                     gameScreen.blit(textcenaT13, (1800, 366))
                     gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
+                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 32:
                     gameScreen.blit(pygame.transform.rotate(turret42,0),(1700,63))
                     gameScreen.blit(textcenaT42, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,279))
                     gameScreen.blit(textcenaT33, (1800, 366))
                     gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
+                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 22:
                     gameScreen.blit(pygame.transform.rotate(turret32,0),(1700,63))
                     gameScreen.blit(textcenaT32, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret23,0),(1700,279))
                     gameScreen.blit(textcenaT23, (1800, 366))
                     gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
+                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 42:
                     gameScreen.blit(pygame.transform.rotate(turret42,0),(1700,63))
                     gameScreen.blit(maxtext, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret43,0),(1700,279))
                     gameScreen.blit(textcenaT43, (1800, 366))
                     gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
+                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 13:
                     gameScreen.blit(pygame.transform.rotate(turret23,0),(1700,63))
                     gameScreen.blit(textcenaT23, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret13,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
                     gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
+                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 23:
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,63))
                     gameScreen.blit(textcenaT33, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret23,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
                     gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
+                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 33:
                     gameScreen.blit(pygame.transform.rotate(turret43,0),(1700,63))
                     gameScreen.blit(textcenaT43, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
                     gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
+                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 43:
                     gameScreen.blit(pygame.transform.rotate(turret43,0),(1700,63))
                     gameScreen.blit(maxtext, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
                     gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 70))
+                    gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
+                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
+
+
                 if (T[i][0]+25) >= mouse_position[0] >= (T[i][0]-25) and (T[i][1]+25) >= mouse_position[1] >= (T[i][1]-25):
                     if event.type == pygame.MOUSEBUTTONUP:
                         T[i][2] = True
@@ -432,8 +472,8 @@ def pohyb_lvl1(Enemy):
                 for i in range(16):
                     if (TPL[i][0] <= mouse_position[0] <= TPL[i][1]):
                         if(TPL[i][2] <= mouse_position[1] <= TPL[i][3]):
-                            T.append([mouse_position[0], mouse_position[1], False, 11, 1, 1, 999, False, 0])
-                            #                x      ,       y       , selected, type, speed, dmg, locked enemy, locked, UHOL
+                            T.append([mouse_position[0], mouse_position[1], False, 11, 1, 1, 999, False, 0, 0])
+                            #                x      ,       y       , selected, type, speed, dmg, locked enemy, locked, UHOL, kills
                             Pturret11 = False
                             money -= cenaT11
 
@@ -441,38 +481,48 @@ def pohyb_lvl1(Enemy):
             mouse_position = pygame.mouse.get_pos()
 
 
+        #vykreslovanie turriet podla levelu
+        
         for i in range(len(T)):
-            if T[i][3] == 11:
-                gameScreen.blit(pygame.transform.rotate(turret11,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
-            if T[i][3] == 21:
-                gameScreen.blit(pygame.transform.rotate(turret21,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
-            if T[i][3] == 31:
-                gameScreen.blit(pygame.transform.rotate(turret31,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
-            if T[i][3] == 41:
-                gameScreen.blit(pygame.transform.rotate(turret41,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
-            if T[i][3] == 42:
-                gameScreen.blit(pygame.transform.rotate(turret42,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
-            if T[i][3] == 12:
-                gameScreen.blit(pygame.transform.rotate(turret12,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
-            if T[i][3] == 22:
-                gameScreen.blit(pygame.transform.rotate(turret22,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
-            if T[i][3] == 32:
-                gameScreen.blit(pygame.transform.rotate(turret32,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
-            if T[i][3] == 13:
-                gameScreen.blit(pygame.transform.rotate(turret13,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
-            if T[i][3] == 23:
-                gameScreen.blit(pygame.transform.rotate(turret23,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
-            if T[i][3] == 33:
-                gameScreen.blit(pygame.transform.rotate(turret33,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
-            if T[i][3] == 43:
-                gameScreen.blit(pygame.transform.rotate(turret43,T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
+            for j in range(len(Tblit)):
+                if T[i][3] == Tblit[j][0]:
+                    gameScreen.blit(pygame.transform.rotate(Tblit[j][1],T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
+                
 
+        if move == False:
+            pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((1508,656 ),(200,200)),)
+            if (1508 <= mouse_position[0] <= 1708) and (656 <= mouse_position[1] <= 856):
+                if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                    E.clear()
+                    
+                    for i in range(Enemy):
+                        randomZ = random.randint(1,5)
+                            #[x, y, alive, speed, MaxHP, uhol, started, type, HP]
+                        if randomZ == 1:
+                            E.append([1367, -100, True, 1, 2, 0, False, zombie1_1, 2])
+                        if randomZ == 2:
+                            E.append([1367, -100, True, 1, 2, 0, False, zombie1_2, 1])
+                        if randomZ == 3:
+                            E.append([1367, -100, True, 1, 2, 0, False, zombie1_3, 1.5])
+                        if randomZ == 4:
+                            E.append([1367, -100, True, 1, 2, 0, False, zombie1_4, 2])
+                        if randomZ == 5:
+                            E.append([1367, -100, True, 1, 2, 0, False, zombie1_5, 2])
+                    move = True
+                    print(E)
 
-       
         
         
         test = 0
         if move:
+            print(wave,Enemy)
+            
+
+
+
+
+
+
 
             for i in range(Enemy):
                 if (EnemyTrack[test][0] <= E[i][1] <= EnemyTrack[test][1]) and E[i][0] == EnemyTrack[test][2]:
@@ -506,7 +556,6 @@ def pohyb_lvl1(Enemy):
                 if E[i][2] == True:
                     if E[i][5] == 180 or E[i][5] == 0:
                         if E[i][8] != E[i][4]:
-                            print("hitted")
                             cHP = E[i][4]/E[i][8]
                             pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((E[i][0] + 4,E[i][1] - dorovnavanie),(HP/cHP,10)),)
                         else:
@@ -515,7 +564,6 @@ def pohyb_lvl1(Enemy):
                     cHP = 1
                     if E[i][5] == 90 or E[i][5] == -90:
                         if E[i][8] != E[i][4]:
-                            print("hitted")
                             cHP = E[i][4]/E[i][8]
                             pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((E[i][0],E[i][1] - dorovnavanie),(HP/cHP,10)),)
                         else:
@@ -649,18 +697,36 @@ def pohyb_lvl1(Enemy):
                     E[spustenie][6] = True
                     spustenie += 1
 
+
+            dead = 0
+
+
+            for i in range(len(E)):
+                if move == True:
+                    if E[i][2] == False:
+                        dead += 1 
+                        if dead == Enemy:
+                            move = False
+                            E.clear()
+                            print("all ded")
+                            if wave == 1:
+                                Enemy = 2
+                                wave = 2
+                            elif wave == 2:
+                                Enemy = 3
+                                wave = 3
+                            elif wave == 3:
+                                Enemy = 5
+                                wave = 5
+
+
+
+
+
             #HP
-            #ikony
-            gameScreen.blit(pygame.transform.rotate(turret11,0),(185,63))
             
-            #HP_WHITE = WHITEFont.render(("Health: %s" % health) , True, (255,255,255))
-            textHelth = WHITEFont.render(("%s" % health) , True, (255,255,255))
-            textMoney = WHITEFont.render(("%s" % money) , True, (255,255,255))
+            
 
-
-            gameScreen.blit(textHelth, (1600, 1000))
-            gameScreen.blit(textMoney, (1600, 900))
-            gameScreen.blit(textcenaT11, (300, 150))
 
 
         pygame.display.flip()

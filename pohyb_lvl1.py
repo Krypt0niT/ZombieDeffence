@@ -546,7 +546,7 @@ def pohyb_lvl1(Enemy):
 
 
                             if (T[j][0]-150) <= E[T[j][6]][0] <= (T[j][0]+150) and (T[j][1]-150) <= E[T[j][6]][1] <= (T[j][1]+150):
-                                print("")
+                                print(".")
                             else:
                                 T[j][7] = False
                                 T[j][6] = 999

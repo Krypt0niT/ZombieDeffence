@@ -6,7 +6,7 @@ import math
 
 from pygame.constants import K_LEFT
 from pygame.rect import Rect
-def pohyb_lvl1(Enemy):
+def pohyb_lvl1():
     
 
     
@@ -20,7 +20,7 @@ def pohyb_lvl1(Enemy):
     whitefont = pygame.font.Font("Dirty_War.otf", 20)
 
     
-    #ikona okna
+
     zombie1_1 = pygame.image.load('images/zombie/zombie_lvl1_1.png')
     zombie1_1.convert()
     zombie1_2 = pygame.image.load('images/zombie/zombie_lvl1_2.png')
@@ -102,11 +102,9 @@ def pohyb_lvl1(Enemy):
     E = []
     T = []
 
-    wave = 2
-    
-
-
-
+    Enemy = 1
+    wave = 1
+    gameSPEED = 120
 
 
 
@@ -141,18 +139,18 @@ def pohyb_lvl1(Enemy):
 
     cenaT11 = 100
     cenaT21 = 250
-    cenaT31 = 400
-    cenaT41 = 1000
+    cenaT31 = 500
+    cenaT41 = 750
 
-    cenaT12 = 300
+    cenaT12 = 250
     cenaT22 = 500
     cenaT32 = 750
     cenaT42 = 1000
 
-    cenaT13 = 1000
-    cenaT23 = 1500
-    cenaT33 = 2000
-    cenaT43 = 2500
+    cenaT13 = 500
+    cenaT23 = 750
+    cenaT33 = 1000
+    cenaT43 = 1500
  
 
 
@@ -176,17 +174,17 @@ def pohyb_lvl1(Enemy):
 
     textcenaT11 = WHITEFont.render("100" , True, (255,255,255))
     textcenaT21 = WHITEFont.render("250" , True, (255,255,255))
-    textcenaT31 = WHITEFont.render("400" , True, (255,255,255))
-    textcenaT41 = WHITEFont.render("1000" , True, (255,255,255))
-    textcenaT12 = WHITEFont.render("300" , True, (255,255,255))
+    textcenaT31 = WHITEFont.render("500" , True, (255,255,255))
+    textcenaT41 = WHITEFont.render("750" , True, (255,255,255))
+    textcenaT12 = WHITEFont.render("250" , True, (255,255,255))
     textcenaT22 = WHITEFont.render("500" , True, (255,255,255))
     textcenaT32 = WHITEFont.render("750" , True, (255,255,255))
     textcenaT42 = WHITEFont.render("1000" , True, (255,255,255))
 
-    textcenaT13 = WHITEFont.render("1500" , True, (255,255,255))
-    textcenaT23 = WHITEFont.render("1500" , True, (255,255,255))
+    textcenaT13 = WHITEFont.render("500" , True, (255,255,255))
+    textcenaT23 = WHITEFont.render("750" , True, (255,255,255))
     textcenaT33 = WHITEFont.render("1000" , True, (255,255,255))
-    textcenaT43 = WHITEFont.render("1000" , True, (255,255,255))
+    textcenaT43 = WHITEFont.render("1500" , True, (255,255,255))
     maxtext = WHITEFont.render("MAX" , True, (255,255,255))
 
     Trange = pygame.image.load("images/other/range.png")
@@ -202,7 +200,7 @@ def pohyb_lvl1(Enemy):
 
     while run:
         
-        clock.tick(120)
+        clock.tick(gameSPEED)
         gameScreen.blit(bg, (0, 0))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -283,7 +281,7 @@ def pohyb_lvl1(Enemy):
                     gameScreen.blit(pygame.transform.rotate(turret32,0),(1700,63))
                     gameScreen.blit(textcenaT32, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret13,0),(1700,279))
-                    gameScreen.blit(textcenaT13, (1800, 366))
+                    gameScreen.blit(textcenaT23, (1800, 366))
                     gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
                     gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
@@ -421,22 +419,22 @@ def pohyb_lvl1(Enemy):
                         elif T[i][3] == 12:
                             if money >= cenaT13:
                                 T[i][3] = 13
-                                T[i][4] = 1.7
+                                T[i][4] = 2
                                 money -= cenaT13
                         elif T[i][3] == 22:
                             if money >= cenaT23:
                                 T[i][3] = 23
-                                T[i][4] = 1.7
+                                T[i][4] = 2
                                 money -= cenaT23
                         elif T[i][3] == 32:
                             if money >= cenaT33:
                                 T[i][3] = 33
-                                T[i][4] = 1.7
+                                T[i][4] = 2
                                 money -= cenaT23
                         elif T[i][3] == 42:
                             if money >= cenaT43:
                                 T[i][3] = 43
-                                T[i][4] = 1.7
+                                T[i][4] = 2
                                 money -= cenaT43
                         elif T[i][3] == 41:
                             if money >= cenaT42:
@@ -509,22 +507,23 @@ def pohyb_lvl1(Enemy):
                         if randomZ == 5:
                             E.append([1367, -100, True, 1, 2, 0, False, zombie1_5, 2])
                     move = True
-                    print(E)
+
 
         
         
         test = 0
         if move:
-            print(wave,Enemy)
+
             
 
-
+          
 
 
 
 
 
             for i in range(Enemy):
+                
                 if (EnemyTrack[test][0] <= E[i][1] <= EnemyTrack[test][1]) and E[i][0] == EnemyTrack[test][2]:
                     if E[i][6] == True:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
@@ -546,7 +545,7 @@ def pohyb_lvl1(Enemy):
 
 
                             if (T[j][0]-150) <= E[T[j][6]][0] <= (T[j][0]+150) and (T[j][1]-150) <= E[T[j][6]][1] <= (T[j][1]+150):
-                                print(".")
+                                print("")
                             else:
                                 T[j][7] = False
                                 T[j][6] = 999
@@ -708,7 +707,6 @@ def pohyb_lvl1(Enemy):
                         if dead == Enemy:
                             move = False
                             E.clear()
-                            print("all ded")
                             if wave == 1:
                                 Enemy = 2
                                 wave = 2
@@ -717,7 +715,17 @@ def pohyb_lvl1(Enemy):
                                 wave = 3
                             elif wave == 3:
                                 Enemy = 5
+                                wave = 4
+                            elif wave == 4:
+                                Enemy = 7
                                 wave = 5
+                            for j in range(len(T)):
+                                T[j][8] = 0
+                            
+
+                            start = 0
+                            spustenie = 0
+
 
 
 

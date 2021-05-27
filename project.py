@@ -27,6 +27,6 @@ while run:
     gameScreen.blit(bg, (0, 0))
     
     if kolo:
-        pohyb_lvl1(Enemy)
+        pohyb_lvl1()
 pygame.quit()
 quit()

@@ -203,6 +203,8 @@ def pohyb_lvl1():
     speedlvl3 = 50
     # sounds
     shoot = pygame.mixer.Sound("sounds/turrets/shoot.mp3")
+    upgrade1 = pygame.mixer.Sound("sounds/turrets/upgrade1.mp3")
+    upgrade2 = pygame.mixer.Sound("sounds/turrets/upgrade2.mp3")
     
 
     playbutton = pygame.image.load("images/other/play.png")
@@ -426,52 +428,63 @@ def pohyb_lvl1():
 
                 if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                     pos = pygame.mouse.get_pos()
+                    
+                    
                     if (1500 <= pos[0]) and (pos[0] <= 1920) and (0 <= pos[1]) and (pos[1] <= 216):
                         if T[i][3] == 11:
                             if money >= cenaT21:
                                 T[i][3] = 21
                                 T[i][5] = 2
                                 money -= cenaT21
+                                pygame.mixer.Sound.play(upgrade1)
                         elif T[i][3] == 21:
                             if money >= cenaT31:
                                 T[i][3] = 31
                                 T[i][5] = 3
                                 money -= cenaT31
+                                pygame.mixer.Sound.play(upgrade1)
                         elif T[i][3] == 31:
                             if money >= cenaT41:
                                 T[i][3] = 41
                                 T[i][5] = 3
                                 money -= cenaT41
+                                pygame.mixer.Sound.play(upgrade1)
                         elif T[i][3] == 12:
                             if money >= cenaT22:
                                 T[i][3] = 22
                                 T[i][5] = 2
                                 money -= cenaT22
+                                pygame.mixer.Sound.play(upgrade1)
                         elif T[i][3] == 22:
                             if money >= cenaT32:
                                 T[i][3] = 32
                                 T[i][5] = 3
                                 money -= cenaT32
+                                pygame.mixer.Sound.play(upgrade1)
                         elif T[i][3] == 32:
                             if money >= cenaT42:
                                 T[i][3] = 42
                                 T[i][5] = 4
                                 money -= cenaT42
+                                pygame.mixer.Sound.play(upgrade1)
                         elif T[i][3] == 23:
                             if money >= cenaT32:
                                 T[i][3] = 33
                                 T[i][5] = 3
                                 money -= cenaT32
+                                pygame.mixer.Sound.play(upgrade1)
                         elif T[i][3] == 33:
                             if money >= cenaT43:
                                 T[i][3] = 43
                                 T[i][5] = 4
                                 money -= cenaT43
+                                pygame.mixer.Sound.play(upgrade1)
                         elif T[i][3] == 13:
                             if money >= cenaT23:
                                 T[i][3] = 23
                                 T[i][5] = 2
                                 money -= cenaT23
+                                pygame.mixer.Sound.play(upgrade1)
                                 
                     elif (1500 <= pos[0]) and (pos[0] <= 1920) and (217 <= pos[1]) and (pos[1] <= 432):
                         if T[i][3] == 11:
@@ -479,42 +492,49 @@ def pohyb_lvl1():
                                 T[i][3] = 12
                                 T[i][4] = speedlvl2
                                 money -= cenaT12
+                                pygame.mixer.Sound.play(upgrade2)
                         elif T[i][3] == 21:
                             if money >= cenaT22:
                                 T[i][3] = 22
                                 T[i][4] = speedlvl2
                                 money -= cenaT22
+                                pygame.mixer.Sound.play(upgrade2)
                         elif T[i][3] == 31:
                             if money >= cenaT32:
                                 T[i][3] = 32
                                 T[i][4] = speedlvl2
                                 money -= cenaT32
-                        
+                                pygame.mixer.Sound.play(upgrade2)
                         elif T[i][3] == 12:
                             if money >= cenaT13:
                                 T[i][3] = 13
                                 T[i][4] = speedlvl3
                                 money -= cenaT13
+                                pygame.mixer.Sound.play(upgrade2)
                         elif T[i][3] == 22:
                             if money >= cenaT23:
                                 T[i][3] = 23
                                 T[i][4] = speedlvl3
                                 money -= cenaT23
+                                pygame.mixer.Sound.play(upgrade2)
                         elif T[i][3] == 32:
                             if money >= cenaT33:
                                 T[i][3] = 33
                                 T[i][4] = speedlvl3
                                 money -= cenaT23
+                                pygame.mixer.Sound.play(upgrade2)
                         elif T[i][3] == 42:
                             if money >= cenaT43:
                                 T[i][3] = 43
                                 T[i][4] = speedlvl3
                                 money -= cenaT43
+                                pygame.mixer.Sound.play(upgrade2)
                         elif T[i][3] == 41:
                             if money >= cenaT42:
                                 T[i][3] = 42
                                 T[i][4] = speedlvl2
                                 money -= cenaT42
+                                pygame.mixer.Sound.play(upgrade2)
                         
                         
                         

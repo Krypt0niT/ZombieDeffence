@@ -636,9 +636,9 @@ def pohyb_lvl1():
                         E[i][5] = EnemyTrack[test][3]
                 for j in range(len(T)):
 
-
                         if (T[j][0]-150) <= E[i][0] <= (T[j][0]+150) and (T[j][1]-150) <= E[i][1] <= (T[j][1]+150):
-                               if T[j][7] == False:
+                            if E[i][2] == True:
+                                if T[j][7] == False:
                                     T[j][6] = i
                                     T[j][7] = True
                                     #if T[j][6] 

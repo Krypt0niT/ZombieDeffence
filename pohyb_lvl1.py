@@ -201,6 +201,8 @@ def pohyb_lvl1():
     speedlvl1 = 100
     speedlvl2 = 75
     speedlvl3 = 50
+    # sounds
+    shoot = pygame.mixer.Sound("sounds/turrets/shoot.mp3")
     
 
     playbutton = pygame.image.load("images/other/play.png")
@@ -621,6 +623,7 @@ def pohyb_lvl1():
                                 T[j][10] += 1
 
                                 if T[j][10] == T[j][4]:
+                                    pygame.mixer.Sound.play(shoot)
                                     #turret ready to shoot
                                     if (T[j][3] == 11) or (T[j][3] == 12) or (T[j][3] == 13):
                                         B.append([T[j][0], T[j][1], T[j][0] , T[j][1] , 0 , 0 , 20     , 0   , E[T[j][6]][0], E[T[j][6]][1] ,   0   , (0,255,0),True])

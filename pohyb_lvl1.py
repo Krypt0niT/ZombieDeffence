@@ -101,6 +101,7 @@ def pohyb_lvl1():
 
     E = []
     T = []
+    B = []
 
     Enemy = 1
     wave = 1
@@ -158,8 +159,10 @@ def pohyb_lvl1():
     mouse_position = []
 
     #turret place location
-    TPL = [(445,1338,20,50),(445,473,50,925),(474,794,484,591),(582,1120,162,269),(582,687,270,375),(771,819,353,484),(582,1010,650,808),(474,1227,910,925),
-        (1119,1227,700,909),(900,1010,270,649),(1011,1120,270,591),(1230,1338,51,375),(1447,1474,25,1055),(1121,1446,484,591),(1286,1446,592,1054),
+    TPL = [(445,1338,20,50),(445,473,50,925),(474,794,484,591),(582,1120,162,269),
+    (582,687,270,375),(771,819,353,484),(582,1010,650,808),(474,1227,910,925),
+        (1119,1227,700,909),(900,1010,270,649),(1011,1120,270,591),(1230,1338,51,375),
+        (1447,1474,25,1055),(1121,1446,484,591),(1286,1446,592,1054),
         (445,1285,974,1054)]
 
     
@@ -195,6 +198,10 @@ def pohyb_lvl1():
     #farby
     liteGreen = (0,255,0)
 
+    speedlvl1 = 100
+    speedlvl2 = 75
+    speedlvl3 = 50
+    
 
     playbutton = pygame.image.load("images/other/play.png")
 
@@ -221,7 +228,7 @@ def pohyb_lvl1():
         gameScreen.blit(textHelth, (1600, 1000))
         gameScreen.blit(textMoney, (1600, 900))
         gameScreen.blit(textcenaT11, (300, 150))
-
+        gameScreen.blit(WHITEFont.render(("Wave: %s" % wave) , True, (255,255,255)), (1720,656))
         
         
 
@@ -242,7 +249,12 @@ def pohyb_lvl1():
                     gameScreen.blit(textcenaT21, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret12,0),(1700,279))
                     gameScreen.blit(textcenaT12, (1800, 366))
-                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    if T[i][4] == 100:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 75:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 50:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
                     gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 21:
@@ -250,7 +262,12 @@ def pohyb_lvl1():
                     gameScreen.blit(textcenaT31, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret22,0),(1700,279))
                     gameScreen.blit(textcenaT22, (1800, 366))
-                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    if T[i][4] == 100:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 75:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 50:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
                     gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 31:
@@ -258,7 +275,12 @@ def pohyb_lvl1():
                     gameScreen.blit(textcenaT41, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret32,0),(1700,279))
                     gameScreen.blit(textcenaT32, (1800, 366))
-                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    if T[i][4] == 100:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 75:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 50:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
                     gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 41:
@@ -266,7 +288,12 @@ def pohyb_lvl1():
                     gameScreen.blit(maxtext, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret42,0),(1700,279))
                     gameScreen.blit(textcenaT42, (1800, 366))
-                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    if T[i][4] == 100:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 75:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 50:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
                     gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 12:
@@ -274,7 +301,12 @@ def pohyb_lvl1():
                     gameScreen.blit(textcenaT22, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret13,0),(1700,279))
                     gameScreen.blit(textcenaT13, (1800, 366))
-                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    if T[i][4] == 100:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 75:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 50:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
                     gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 22:
@@ -282,7 +314,12 @@ def pohyb_lvl1():
                     gameScreen.blit(textcenaT32, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret13,0),(1700,279))
                     gameScreen.blit(textcenaT23, (1800, 366))
-                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    if T[i][4] == 100:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 75:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 50:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
                     gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 32:
@@ -290,7 +327,12 @@ def pohyb_lvl1():
                     gameScreen.blit(textcenaT42, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,279))
                     gameScreen.blit(textcenaT33, (1800, 366))
-                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    if T[i][4] == 100:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 75:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 50:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
                     gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 22:
@@ -298,7 +340,12 @@ def pohyb_lvl1():
                     gameScreen.blit(textcenaT32, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret23,0),(1700,279))
                     gameScreen.blit(textcenaT23, (1800, 366))
-                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    if T[i][4] == 100:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 75:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 50:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
                     gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 42:
@@ -306,7 +353,12 @@ def pohyb_lvl1():
                     gameScreen.blit(maxtext, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret43,0),(1700,279))
                     gameScreen.blit(textcenaT43, (1800, 366))
-                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    if T[i][4] == 100:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 75:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 50:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
                     gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 13:
@@ -314,7 +366,12 @@ def pohyb_lvl1():
                     gameScreen.blit(textcenaT23, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret13,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
-                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    if T[i][4] == 100:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 75:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 50:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
                     gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 23:
@@ -322,7 +379,12 @@ def pohyb_lvl1():
                     gameScreen.blit(textcenaT33, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret23,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
-                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    if T[i][4] == 100:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 75:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 50:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
                     gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 33:
@@ -330,7 +392,12 @@ def pohyb_lvl1():
                     gameScreen.blit(textcenaT43, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
-                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    if T[i][4] == 100:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 75:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 50:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
                     gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 43:
@@ -338,7 +405,12 @@ def pohyb_lvl1():
                     gameScreen.blit(maxtext, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
-                    gameScreen.blit(whitefont.render(("AttackSpeed: %s" % T[i][4]) , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    if T[i][4] == 100:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 75:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
+                    elif T[i][4] == 50:
+                        gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
                     gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
 
@@ -403,43 +475,43 @@ def pohyb_lvl1():
                         if T[i][3] == 11:
                             if money >= cenaT12:
                                 T[i][3] = 12
-                                T[i][4] = 1.5
+                                T[i][4] = speedlvl2
                                 money -= cenaT12
                         elif T[i][3] == 21:
                             if money >= cenaT22:
                                 T[i][3] = 22
-                                T[i][4] = 1.5
+                                T[i][4] = speedlvl2
                                 money -= cenaT22
                         elif T[i][3] == 31:
                             if money >= cenaT32:
                                 T[i][3] = 32
-                                T[i][4] = 1.5
+                                T[i][4] = speedlvl2
                                 money -= cenaT32
                         
                         elif T[i][3] == 12:
                             if money >= cenaT13:
                                 T[i][3] = 13
-                                T[i][4] = 2
+                                T[i][4] = speedlvl3
                                 money -= cenaT13
                         elif T[i][3] == 22:
                             if money >= cenaT23:
                                 T[i][3] = 23
-                                T[i][4] = 2
+                                T[i][4] = speedlvl3
                                 money -= cenaT23
                         elif T[i][3] == 32:
                             if money >= cenaT33:
                                 T[i][3] = 33
-                                T[i][4] = 2
+                                T[i][4] = speedlvl3
                                 money -= cenaT23
                         elif T[i][3] == 42:
                             if money >= cenaT43:
                                 T[i][3] = 43
-                                T[i][4] = 2
+                                T[i][4] = speedlvl3
                                 money -= cenaT43
                         elif T[i][3] == 41:
                             if money >= cenaT42:
                                 T[i][3] = 42
-                                T[i][4] = 1.5
+                                T[i][4] = speedlvl2
                                 money -= cenaT42
                         
                         
@@ -470,8 +542,8 @@ def pohyb_lvl1():
                 for i in range(16):
                     if (TPL[i][0] <= mouse_position[0] <= TPL[i][1]):
                         if(TPL[i][2] <= mouse_position[1] <= TPL[i][3]):
-                            T.append([mouse_position[0], mouse_position[1], False, 11, 1, 1, 999, False, 0, 0])
-                            #                x      ,       y       , selected, type, speed, dmg, locked enemy, locked, UHOL, kills
+                            T.append([mouse_position[0], mouse_position[1], False, 11, 100, 1, 999, False, 0, 0, 0])
+                            #                x   ,       y       , selected, type, speed, dmg, locked enemy, locked, UHOL, kills, ready number
                             Pturret11 = False
                             money -= cenaT11
 
@@ -485,6 +557,12 @@ def pohyb_lvl1():
             for j in range(len(Tblit)):
                 if T[i][3] == Tblit[j][0]:
                     gameScreen.blit(pygame.transform.rotate(Tblit[j][1],T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
+
+        if len(T) > 0:
+            cenaT11 = (len(T) * 100)
+            textcenaT11 = WHITEFont.render(" %s" % cenaT11, True, (255,255,255))
+
+        
                 
 
         if move == False:
@@ -506,6 +584,9 @@ def pohyb_lvl1():
                             E.append([1367, -100, True, 1, 2, 0, False, zombie1_4, 2])
                         if randomZ == 5:
                             E.append([1367, -100, True, 1, 2, 0, False, zombie1_5, 2])
+
+
+
                     move = True
 
 
@@ -515,11 +596,6 @@ def pohyb_lvl1():
         if move:
 
             
-
-          
-
-
-
 
 
             for i in range(Enemy):
@@ -541,14 +617,45 @@ def pohyb_lvl1():
                             ex , ey = E[T[j][6]][0] ,E[T[j][6]][1]
                             dx , dy = ex - ((T[j][0])), ey -((T[j][1]))
                             T[j][8] = math.degrees(math.atan2(-dy,dx)) -90
+                            if T[j][10] <= T[j][4]:
+                                T[j][10] += 1
+
+                                if T[j][10] == T[j][4]:
+                                    #turret ready to shoot
+                                    if (T[j][3] == 11) or (T[j][3] == 12) or (T[j][3] == 13):
+                                        B.append([T[j][0], T[j][1], T[j][0] , T[j][1] , 0 , 0 , 20     , 0   , E[T[j][6]][0], E[T[j][6]][1] ,   0   , (0,255,0),True])
+                                        #           x    ,    y   ,pmx      ,pmy      , dx, dy,speed, distance,       mx     ,      my        ,radians,    color,    true
+                                        T[j][10] = 0
+                                    if (T[j][3] == 21) or (T[j][3] == 22) or (T[j][3] == 23):
+                                        B.append([T[j][0], T[j][1], T[j][0] , T[j][1] , 0 , 0 , 20     , 0   , E[T[j][6]][0], E[T[j][6]][1] ,   0   , (0,0,255),True])
+                                        #           x    ,    y   ,pmx      ,pmy      , dx, dy,speed, distance,       mx     ,      my        ,radians,    color,    true
+                                        T[j][10] = 0
+                                    if (T[j][3] == 31) or (T[j][3] == 32) or (T[j][3] == 33):
+                                        B.append([T[j][0], T[j][1], T[j][0] , T[j][1] , 0 , 0 , 20     , 0   , E[T[j][6]][0], E[T[j][6]][1] ,   0   , (255,0,0),True])
+                                        #           x    ,    y   ,pmx      ,pmy      , dx, dy,speed, distance,       mx     ,      my        ,radians,    color,    true
+                                        T[j][10] = 0
+                                    if (T[j][3] == 41) or (T[j][3] == 42) or (T[j][3] == 43):
+                                        B.append([T[j][0], T[j][1], T[j][0] , T[j][1] , 0 , 0 , 20     , 0   , E[T[j][6]][0], E[T[j][6]][1] ,   0   , (255,213,28),True])
+                                        #           x    ,    y   ,pmx      ,pmy      , dx, dy,speed, distance,       mx     ,      my        ,radians,    color,    true
+                                        T[j][10] = 0
+
+
                             
 
 
                             if (T[j][0]-150) <= E[T[j][6]][0] <= (T[j][0]+150) and (T[j][1]-150) <= E[T[j][6]][1] <= (T[j][1]+150):
-                                print("")
+                                a = 0
                             else:
                                 T[j][7] = False
+                                T[j][10] = 0
                                 T[j][6] = 999
+
+        
+
+
+
+
+
                 dorovnavanie = 20
                 HP = 40
                 #v PX
@@ -686,6 +793,51 @@ def pohyb_lvl1():
                 if E[i][0]  == 400:
                     health -= 1
                     E[i][2] = False
+            distance = 0
+            for i in range(len(B)):
+                if B[i][12]:
+                    x = B[i][0]
+                    y = B[i][1]
+                    pmx = B[i][2]
+                    pmy = B[i][3]
+                    dx = B[i][4]
+                    dy = B[i][5]
+                    speed = B[i][6]
+                    distance = B[i][7]
+                    mx = B[i][8]
+                    my = B[i][9]
+                    radians = B[i][10]
+                    color = B[i][11]
+                    
+                    radians = math.atan2(my - pmy, mx - pmx)
+                    distance = math.hypot(mx - pmx, my - pmy) / speed
+                    distance = int(distance)
+
+                    dx = math.cos(radians) * speed
+                    dy = math.sin(radians) * speed
+
+
+                    
+                    pmx, pmy = mx, my
+                    #pmx, pmy = mx, my
+                if distance:
+                    distance -= 1
+                    x += dx
+                    y += dy
+
+
+                pygame.draw.circle(gameScreen, color, (int(x), int(y)), 4, 0)
+                B[i][0] = x
+                B[i][1] = y
+ 
+            print(len(B))
+
+
+
+
+
+
+
 
 
 
@@ -707,18 +859,21 @@ def pohyb_lvl1():
                         if dead == Enemy:
                             move = False
                             E.clear()
+                            B.clear()
                             if wave == 1:
                                 Enemy = 2
-                                wave = 2
+                                wave += 1
                             elif wave == 2:
                                 Enemy = 3
-                                wave = 3
+                                wave += 1
                             elif wave == 3:
                                 Enemy = 5
-                                wave = 4
+                                wave += 1
                             elif wave == 4:
                                 Enemy = 7
-                                wave = 5
+                                wave += 1
+                            elif wave > 4:
+                                wave += 1 
                             for j in range(len(T)):
                                 T[j][8] = 0
                             
@@ -728,10 +883,12 @@ def pohyb_lvl1():
 
 
 
+            
+
+            
 
 
 
-            #HP
             
             
 

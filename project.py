@@ -9,8 +9,6 @@ pygame.display.set_caption("Zombie Deffence")
 icon = pygame.image.load("images/zombie/zombie_lvl1_1.png")
 pygame.display.set_icon(icon)
 
-#terajšie pozadie
-bg = pygame.image.load("hra_template.png")
 
 Enemy = 2
 kolo = True
@@ -22,10 +20,6 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-            
-    #vytvorenie pozadia pre gameScreen
-    gameScreen.blit(bg, (0, 0))
-    
     if kolo:
         pohyb_lvl1()
 pygame.quit()

@@ -564,6 +564,13 @@ def pohyb_lvl1():
                 for i in range(16):
                     if (TPL[i][0] <= mouse_position[0] <= TPL[i][1]):
                         if(TPL[i][2] <= mouse_position[1] <= TPL[i][3]):
+                            randomS = random.randint(1,2)
+                            if randomS == 1:
+                                pygame.mixer.Sound.play(upgrade1)
+                            else:
+                                pygame.mixer.Sound.play(upgrade2)
+
+
                             T.append([mouse_position[0], mouse_position[1], False, 11, 100, 1, 999, False, 0, 0, 0])
                             #                x   ,       y       , selected, type, speed, dmg, locked enemy, locked, UHOL, kills, ready number
                             Pturret11 = False

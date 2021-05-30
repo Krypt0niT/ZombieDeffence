@@ -129,7 +129,7 @@ def pohyb_lvl1():
 
     spustenie = 0
 
-    move = True
+    move = False
     run = True
 
     uhol = 0
@@ -156,7 +156,7 @@ def pohyb_lvl1():
 
 
     Pturret11 = False
-    mouse_position = []
+    mouse_position = (0,0)
 
     #turret place location
     TPL = [(445,1338,20,50),(445,473,50,925),(474,794,484,591),(582,1120,162,269),
@@ -208,6 +208,7 @@ def pohyb_lvl1():
     
 
     playbutton = pygame.image.load("images/other/play.png")
+    playbutton1 = pygame.image.load("images/other/play2.png")
 
     while run:
         
@@ -595,7 +596,7 @@ def pohyb_lvl1():
                 
 
         if move == False:
-            pygame.draw.rect(gameScreen, liteGreen, pygame.Rect((1508,656 ),(200,200)),)
+            gameScreen.blit(pygame.transform.rotate(playbutton1,0),(1508,656))  
             if (1508 <= mouse_position[0] <= 1708) and (656 <= mouse_position[1] <= 856):
                 if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                     E.clear()
@@ -604,15 +605,15 @@ def pohyb_lvl1():
                         randomZ = random.randint(1,5)
                             #[x, y, alive, speed, MaxHP, uhol, started, type, HP]
                         if randomZ == 1:
-                            E.append([1367, -100, True, 1, 2, 0, False, zombie1_1, 2])
+                            E.append([1367, -100, True, 1, 3, 0, False, zombie1_1, 3])
                         if randomZ == 2:
-                            E.append([1367, -100, True, 1, 2, 0, False, zombie1_2, 1])
+                            E.append([1367, -100, True, 1, 3, 0, False, zombie1_2, 3])
                         if randomZ == 3:
-                            E.append([1367, -100, True, 1, 2, 0, False, zombie1_3, 1.5])
+                            E.append([1367, -100, True, 1, 3, 0, False, zombie1_3, 3])
                         if randomZ == 4:
-                            E.append([1367, -100, True, 1, 2, 0, False, zombie1_4, 2])
+                            E.append([1367, -100, True, 1, 3, 0, False, zombie1_4, 3])
                         if randomZ == 5:
-                            E.append([1367, -100, True, 1, 2, 0, False, zombie1_5, 2])
+                            E.append([1367, -100, True, 1, 3, 0, False, zombie1_5, 3])
 
 
 
@@ -630,12 +631,11 @@ def pohyb_lvl1():
             for i in range(Enemy):
                 
                 if (EnemyTrack[test][0] <= E[i][1] <= EnemyTrack[test][1]) and E[i][0] == EnemyTrack[test][2]:
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][1] += E[i][3]
                         E[i][5] = EnemyTrack[test][3]
                 for j in range(len(T)):
-
                         if (T[j][0]-150) <= E[i][0] <= (T[j][0]+150) and (T[j][1]-150) <= E[i][1] <= (T[j][1]+150):
                             if E[i][2] == True:
                                 if T[j][7] == False:
@@ -646,27 +646,33 @@ def pohyb_lvl1():
                             ex , ey = E[T[j][6]][0] ,E[T[j][6]][1]
                             dx , dy = ex - ((T[j][0])), ey -((T[j][1]))
                             T[j][8] = math.degrees(math.atan2(-dy,dx)) -90
-                            if T[j][10] <= T[j][4]:
-                                T[j][10] += 1
 
-                                if T[j][10] == T[j][4]:
+                            if E[T[j][6]][2] == False:
+                                T[j][7] = False
+
+
+                            if T[j][10] <= T[j][4]:
+                                T[j][10] += float(1 / Enemy)
+
+                                if int(T[j][10]) == T[j][4]:
+                                    
                                     pygame.mixer.Sound.play(shoot)
                                     #turret ready to shoot
                                     if (T[j][3] == 11) or (T[j][3] == 12) or (T[j][3] == 13):
-                                        B.append([T[j][0], T[j][1], T[j][0] , T[j][1] , 0 , 0 , 20     , 0   , E[T[j][6]][0], E[T[j][6]][1] ,   0   , (0,255,0),True])
-                                        #           x    ,    y   ,pmx      ,pmy      , dx, dy,speed, distance,       mx     ,      my        ,radians,    color,    true
+                                        B.append([T[j][0], T[j][1], T[j][0] , T[j][1] , 0 , 0 , 20     , 0   , E[T[j][6]][0], E[T[j][6]][1] ,   0   , (0,255,0),True ,     j])
+                                        #           x    ,    y   ,pmx      ,pmy      , dx, dy,speed, distance,       mx     ,      my        ,radians,    color,    true, parent
                                         T[j][10] = 0
                                     if (T[j][3] == 21) or (T[j][3] == 22) or (T[j][3] == 23):
-                                        B.append([T[j][0], T[j][1], T[j][0] , T[j][1] , 0 , 0 , 20     , 0   , E[T[j][6]][0], E[T[j][6]][1] ,   0   , (0,0,255),True])
-                                        #           x    ,    y   ,pmx      ,pmy      , dx, dy,speed, distance,       mx     ,      my        ,radians,    color,    true
+                                        B.append([T[j][0], T[j][1], T[j][0] , T[j][1] , 0 , 0 , 20     , 0   , E[T[j][6]][0], E[T[j][6]][1] ,   0   , (0,0,255),True ,     j])
+                                        #           x    ,    y   ,pmx      ,pmy      , dx, dy,speed, distance,       mx     ,      my        ,radians,    color,    true,parent
                                         T[j][10] = 0
                                     if (T[j][3] == 31) or (T[j][3] == 32) or (T[j][3] == 33):
-                                        B.append([T[j][0], T[j][1], T[j][0] , T[j][1] , 0 , 0 , 20     , 0   , E[T[j][6]][0], E[T[j][6]][1] ,   0   , (255,0,0),True])
-                                        #           x    ,    y   ,pmx      ,pmy      , dx, dy,speed, distance,       mx     ,      my        ,radians,    color,    true
+                                        B.append([T[j][0], T[j][1], T[j][0] , T[j][1] , 0 , 0 , 20     , 0   , E[T[j][6]][0], E[T[j][6]][1] ,   0   , (255,0,0),True,      j])
+                                        #           x    ,    y   ,pmx      ,pmy      , dx, dy,speed, distance,       mx     ,      my        ,radians,    color,    true, parent
                                         T[j][10] = 0
                                     if (T[j][3] == 41) or (T[j][3] == 42) or (T[j][3] == 43):
-                                        B.append([T[j][0], T[j][1], T[j][0] , T[j][1] , 0 , 0 , 20     , 0   , E[T[j][6]][0], E[T[j][6]][1] ,   0   , (255,213,28),True])
-                                        #           x    ,    y   ,pmx      ,pmy      , dx, dy,speed, distance,       mx     ,      my        ,radians,    color,    true
+                                        B.append([T[j][0], T[j][1], T[j][0] , T[j][1] , 0 , 0 , 20     , 0   , E[T[j][6]][0], E[T[j][6]][1] ,   0   , (255,213,28),True,    j])
+                                        #           x    ,    y   ,pmx      ,pmy      , dx, dy,speed, distance,       mx     ,      my        ,radians,    color,    true, parent
                                         T[j][10] = 0
 
 
@@ -677,19 +683,21 @@ def pohyb_lvl1():
                                 a = 0
                             else:
                                 T[j][7] = False
-                                T[j][10] = 0
                                 T[j][6] = 999
 
         
-
-
+                
+                
+                if E[i][8] <= 0:
+                    E[i][2] = False
+                
 
 
 
                 dorovnavanie = 20
                 HP = 40
                 #v PX
-                if E[i][2] == True:
+                if E[i][2]:
                     if E[i][5] == 180 or E[i][5] == 0:
                         if E[i][8] != E[i][4]:
                             cHP = E[i][4]/E[i][8]
@@ -710,111 +718,112 @@ def pohyb_lvl1():
 
 
 
+
             test += 1
             for i in range(Enemy):
                 if E[i][1] == EnemyTrack[test][0] and (EnemyTrack[test][1] <= E[i][0] <= EnemyTrack[test][2]):
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][0] -= E[i][3]
                         E[i][5] = EnemyTrack[test][3]
-                            
+                
 
 
 
             for i in range(Enemy):
                 if (81 <= E[i][1] <= 406) and E[i][0] == 1153:
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][1] -= E[i][3]
                         E[i][5] = 180
 
             for i in range(Enemy):
                 if E[i][1] == 83 and (503 <= E[i][0] <= 1153):
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][0] -= E[i][3]
                         E[i][5] = -90
 
             for i in range(Enemy):
                 if (83 <= E[i][1] <= 407) and E[i][0] == 503:
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][1] += E[i][3]
                         E[i][5] = 0
 
             for i in range(Enemy):
                 if E[i][1] == 407 and (503 <= E[i][0] <= 719):
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][0] += E[i][3]
                         E[i][5] = 90
 
             for i in range(Enemy):
                 if (298 <= E[i][1] <= 407) and E[i][0] == 719:
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][1] -= E[i][3]
                         E[i][5] = 180
 
             for i in range(Enemy):
                 if E[i][1] == 298 and (827 >= E[i][0] >= 719):
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][0] += E[i][3]
                         E[i][5] = 90
 
             for i in range(Enemy):
                 if (298 <= E[i][1] <= 623) and E[i][0] == 827:
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][1] += E[i][3]
                         E[i][5] = 0
 
             for i in range(Enemy): 
                 if E[i][1] == 623 and (502 <= E[i][0] <= 827):
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][0] -= E[i][3]
                         E[i][5] = -90
 
             for i in range(Enemy): 
                 if (840 >= E[i][1] >= 623) and E[i][0] == 502:
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][1] += E[i][3]
                         E[i][5] = 0
 
             for i in range(Enemy):
                 if E[i][1] == 840 and (1043 >= E[i][0] >= 502):
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][0] += E[i][3]
                         E[i][5] = 90
 
             for i in range(Enemy):
                 if (840 >= E[i][1] >= 623) and E[i][0] == 1043:
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][1] -= E[i][3]
                         E[i][5] = 180
 
             for i in range(Enemy):
                 if E[i][1] == 623 and (1258 >= E[i][0] >= 1043):
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][0] += E[i][3]
                         E[i][5] = 90
 
             for i in range(Enemy):
                 if (946 >= E[i][1] >= 623) and  E[i][0] == 1258:
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][1] += E[i][3]
                         E[i][5] = 0
 
             for i in range(Enemy):
                 if E[i][1] == 946 and (399 <= E[i][0] <= 1258):
-                    if E[i][6] == True:
+                    if E[i][6] and E[i][2]:
                         gameScreen.blit(pygame.transform.rotate(E[i][7],E[i][5]),(E[i][0],E[i][1]))
                         E[i][0] -= E[i][3]
                         E[i][5] = -90
@@ -855,14 +864,22 @@ def pohyb_lvl1():
                     x += dx
                     y += dy
 
-
-                pygame.draw.circle(gameScreen, color, (int(x), int(y)), 4, 0)
+                    pygame.draw.circle(gameScreen, color, (int(x), int(y)), 4, 0)
                 B[i][0] = x
                 B[i][1] = y
- 
-            print(len(B))
+               
 
-
+           # print(len(B))
+            for b in range(len(B)):
+                for i in range(Enemy):
+                    if B[b][12]:
+                        if (E[i][0] - 25) <= B[b][0] <= (E[i][0] + 25) and (E[i][1] - 25) <= B[b][1] <= (E[i][1] + 25):
+                            B[b][12] = False
+                            E[i][8] -= T[B[b][13]][5]
+                            print("tač", b, "dmg: ",T[B[b][13]][5])
+                            T[B[b][13]][9] += 1
+                            
+                        #B.pop(b)
 
 
 
@@ -886,10 +903,13 @@ def pohyb_lvl1():
                 if move == True:
                     if E[i][2] == False:
                         dead += 1 
+
                         if dead == Enemy:
                             move = False
                             E.clear()
                             B.clear()
+                            for j in range(len(T)):
+                                T[j][7] = False
                             if wave == 1:
                                 Enemy = 2
                                 wave += 1

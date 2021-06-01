@@ -153,6 +153,9 @@ def pohyb_lvl1():
     cenaT33 = 1000
     cenaT43 = 1500
  
+    EnemySpeed = 1
+    EnemyHealth = 2
+
 
 
     Pturret11 = False
@@ -198,17 +201,29 @@ def pohyb_lvl1():
     #farby
     liteGreen = (0,255,0)
 
-    speedlvl1 = 100
-    speedlvl2 = 75
-    speedlvl3 = 50
+    speedlvl1 = 125
+    speedlvl2 = 100
+    speedlvl3 = 75
+
+
     # sounds
     shoot = pygame.mixer.Sound("sounds/turrets/shoot.mp3")
     upgrade1 = pygame.mixer.Sound("sounds/turrets/upgrade1.mp3")
     upgrade2 = pygame.mixer.Sound("sounds/turrets/upgrade2.mp3")
     
+    deadsound1 = pygame.mixer.Sound("sounds/zombie/dead1.mp3")
+    deadsound2 = pygame.mixer.Sound("sounds/zombie/dead2.mp3")
+    deadsound3 = pygame.mixer.Sound("sounds/zombie/dead3.mp3")
+    deadsound4 = pygame.mixer.Sound("sounds/zombie/dead4.mp3")
+    deadsound5 = pygame.mixer.Sound("sounds/zombie/dead5.mp3")
+    deadsound6 = pygame.mixer.Sound("sounds/zombie/dead6.mp3")
 
     playbutton = pygame.image.load("images/other/play.png")
     playbutton1 = pygame.image.load("images/other/play2.png")
+
+    
+
+
 
     while run:
         
@@ -247,177 +262,177 @@ def pohyb_lvl1():
                         Pturret11 = True
                     #else:
         for i in range(len(T)):
-            if T[i][2] == True:
+            if T[i][2]:
                 gameScreen.blit(pygame.transform.rotate(Trange,0),((T[i][0]-150),(T[i][1]-150)))
                 if T[i][3] == 11:
                     gameScreen.blit(pygame.transform.rotate(turret21,0),(1700,63))
                     gameScreen.blit(textcenaT21, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret12,0),(1700,279))
                     gameScreen.blit(textcenaT12, (1800, 366))
-                    if T[i][4] == 100:
+                    if T[i][4] == speedlvl1:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 75:
+                    elif T[i][4] == speedlvl2:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 50:
+                    elif T[i][4] == speedlvl3:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
-                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
+                    gameScreen.blit(whitefont.render(("Total DMG: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 21:
                     gameScreen.blit(pygame.transform.rotate(turret31,0),(1700,63))
                     gameScreen.blit(textcenaT31, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret22,0),(1700,279))
                     gameScreen.blit(textcenaT22, (1800, 366))
-                    if T[i][4] == 100:
+                    if T[i][4] == speedlvl1:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 75:
+                    elif T[i][4] == speedlvl2:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 50:
+                    elif T[i][4] == speedlvl3:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
-                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
+                    gameScreen.blit(whitefont.render(("Total DMG: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 31:
                     gameScreen.blit(pygame.transform.rotate(turret41,0),(1700,63))
                     gameScreen.blit(textcenaT41, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret32,0),(1700,279))
                     gameScreen.blit(textcenaT32, (1800, 366))
-                    if T[i][4] == 100:
+                    if T[i][4] == speedlvl1:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 75:
+                    elif T[i][4] == speedlvl2:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 50:
+                    elif T[i][4] == speedlvl3:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
-                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
+                    gameScreen.blit(whitefont.render(("Total DMG: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 41:
                     gameScreen.blit(pygame.transform.rotate(turret41,0),(1700,63))
                     gameScreen.blit(maxtext, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret42,0),(1700,279))
                     gameScreen.blit(textcenaT42, (1800, 366))
-                    if T[i][4] == 100:
+                    if T[i][4] == speedlvl1:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 75:
+                    elif T[i][4] == speedlvl2:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 50:
+                    elif T[i][4] == speedlvl3:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
-                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
+                    gameScreen.blit(whitefont.render(("Total DMG: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 12:
                     gameScreen.blit(pygame.transform.rotate(turret22,0),(1700,63))
                     gameScreen.blit(textcenaT22, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret13,0),(1700,279))
                     gameScreen.blit(textcenaT13, (1800, 366))
-                    if T[i][4] == 100:
+                    if T[i][4] == speedlvl1:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 75:
+                    elif T[i][4] == speedlvl2:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 50:
+                    elif T[i][4] == speedlvl3:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
-                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
+                    gameScreen.blit(whitefont.render(("Total DMG: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 22:
                     gameScreen.blit(pygame.transform.rotate(turret32,0),(1700,63))
                     gameScreen.blit(textcenaT32, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret13,0),(1700,279))
                     gameScreen.blit(textcenaT23, (1800, 366))
-                    if T[i][4] == 100:
+                    if T[i][4] == speedlvl1:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 75:
+                    elif T[i][4] == speedlvl2:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 50:
+                    elif T[i][4] == speedlvl3:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
-                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
+                    gameScreen.blit(whitefont.render(("Total DMG: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 32:
                     gameScreen.blit(pygame.transform.rotate(turret42,0),(1700,63))
                     gameScreen.blit(textcenaT42, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,279))
                     gameScreen.blit(textcenaT33, (1800, 366))
-                    if T[i][4] == 100:
+                    if T[i][4] == speedlvl1:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 75:
+                    elif T[i][4] == speedlvl2:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 50:
+                    elif T[i][4] == speedlvl3:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
-                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
+                    gameScreen.blit(whitefont.render(("Total DMG: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 22:
                     gameScreen.blit(pygame.transform.rotate(turret32,0),(1700,63))
                     gameScreen.blit(textcenaT32, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret23,0),(1700,279))
                     gameScreen.blit(textcenaT23, (1800, 366))
-                    if T[i][4] == 100:
+                    if T[i][4] == speedlvl1:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 75:
+                    elif T[i][4] == speedlvl2:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 50:
+                    elif T[i][4] == speedlvl3:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
-                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
+                    gameScreen.blit(whitefont.render(("Total DMG: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 42:
                     gameScreen.blit(pygame.transform.rotate(turret42,0),(1700,63))
                     gameScreen.blit(maxtext, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret43,0),(1700,279))
                     gameScreen.blit(textcenaT43, (1800, 366))
-                    if T[i][4] == 100:
+                    if T[i][4] == speedlvl1:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 75:
+                    elif T[i][4] == speedlvl2:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 50:
+                    elif T[i][4] == speedlvl3:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
-                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
+                    gameScreen.blit(whitefont.render(("Total DMG: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 13:
                     gameScreen.blit(pygame.transform.rotate(turret23,0),(1700,63))
                     gameScreen.blit(textcenaT23, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret13,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
-                    if T[i][4] == 100:
+                    if T[i][4] == speedlvl1:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 75:
+                    elif T[i][4] == speedlvl2:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 50:
+                    elif T[i][4] == speedlvl3:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
-                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
+                    gameScreen.blit(whitefont.render(("Total DMG: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 23:
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,63))
                     gameScreen.blit(textcenaT33, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret23,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
-                    if T[i][4] == 100:
+                    if T[i][4] == speedlvl1:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 75:
+                    elif T[i][4] == speedlvl2:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 50:
+                    elif T[i][4] == speedlvl3:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
-                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
+                    gameScreen.blit(whitefont.render(("Total DMG: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 33:
                     gameScreen.blit(pygame.transform.rotate(turret43,0),(1700,63))
                     gameScreen.blit(textcenaT43, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
-                    if T[i][4] == 100:
+                    if T[i][4] == speedlvl1:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 75:
+                    elif T[i][4] == speedlvl2:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 50:
+                    elif T[i][4] == speedlvl3:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
-                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
+                    gameScreen.blit(whitefont.render(("Total DMG: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
                 if T[i][3] == 43:
                     gameScreen.blit(pygame.transform.rotate(turret43,0),(1700,63))
                     gameScreen.blit(maxtext, (1800, 150))
                     gameScreen.blit(pygame.transform.rotate(turret33,0),(1700,279))
                     gameScreen.blit(maxtext, (1800, 366))
-                    if T[i][4] == 100:
+                    if T[i][4] == speedlvl1:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 1") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 75:
+                    elif T[i][4] == speedlvl2:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 2") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
-                    elif T[i][4] == 50:
+                    elif T[i][4] == speedlvl3:
                         gameScreen.blit(whitefont.render(("AttackSpeed: 3") , True, (255,255,255)), (T[i][0], T[i][1] + 35))
                     gameScreen.blit(whitefont.render(("Damage: %s" % T[i][5]) , True, (255,255,255)), (T[i][0], T[i][1] + 60))
-                    gameScreen.blit(whitefont.render(("Kills: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
+                    gameScreen.blit(whitefont.render(("Total DMG: %s" % T[i][9]) , True, (255,255,255)), (T[i][0], T[i][1] + 85))
 
 
                 if (T[i][0]+25) >= mouse_position[0] >= (T[i][0]-25) and (T[i][1]+25) >= mouse_position[1] >= (T[i][1]-25):
@@ -572,7 +587,7 @@ def pohyb_lvl1():
                                 pygame.mixer.Sound.play(upgrade2)
 
 
-                            T.append([mouse_position[0], mouse_position[1], False, 11, 100, 1, 999, False, 0, 0, 0])
+                            T.append([mouse_position[0], mouse_position[1], False, 11, speedlvl1, 1, 999, False, 0, 0, 0])
                             #                x   ,       y       , selected, type, speed, dmg, locked enemy, locked, UHOL, kills, ready number
                             Pturret11 = False
                             money -= cenaT11
@@ -605,15 +620,15 @@ def pohyb_lvl1():
                         randomZ = random.randint(1,5)
                             #[x, y, alive, speed, MaxHP, uhol, started, type, HP]
                         if randomZ == 1:
-                            E.append([1367, -100, True, 1, 3, 0, False, zombie1_1, 3])
+                            E.append([1367, -100, True, EnemySpeed, EnemyHealth, 0, False, zombie1_1, EnemyHealth])
                         if randomZ == 2:
-                            E.append([1367, -100, True, 1, 3, 0, False, zombie1_2, 3])
+                            E.append([1367, -100, True, EnemySpeed, EnemyHealth, 0, False, zombie1_2, EnemyHealth])
                         if randomZ == 3:
-                            E.append([1367, -100, True, 1, 3, 0, False, zombie1_3, 3])
+                            E.append([1367, -100, True, EnemySpeed, EnemyHealth, 0, False, zombie1_3, EnemyHealth])
                         if randomZ == 4:
-                            E.append([1367, -100, True, 1, 3, 0, False, zombie1_4, 3])
+                            E.append([1367, -100, True, EnemySpeed, EnemyHealth, 0, False, zombie1_4, EnemyHealth])
                         if randomZ == 5:
-                            E.append([1367, -100, True, 1, 3, 0, False, zombie1_5, 3])
+                            E.append([1367, -100, True, EnemySpeed, EnemyHealth, 0, False, zombie1_5, EnemyHealth])
 
 
 
@@ -637,12 +652,12 @@ def pohyb_lvl1():
                         E[i][5] = EnemyTrack[test][3]
                 for j in range(len(T)):
                         if (T[j][0]-150) <= E[i][0] <= (T[j][0]+150) and (T[j][1]-150) <= E[i][1] <= (T[j][1]+150):
-                            if E[i][2] == True:
+                            if E[i][2]:
                                 if T[j][7] == False:
                                     T[j][6] = i
                                     T[j][7] = True
                                     #if T[j][6] 
-                        if T[j][7] == True:
+                        if T[j][7]:
                             ex , ey = E[T[j][6]][0] ,E[T[j][6]][1]
                             dx , dy = ex - ((T[j][0])), ey -((T[j][1]))
                             T[j][8] = math.degrees(math.atan2(-dy,dx)) -90
@@ -652,7 +667,7 @@ def pohyb_lvl1():
 
 
                             if T[j][10] <= T[j][4]:
-                                T[j][10] += float(1 / Enemy)
+                                T[j][10] += float(1 / float(Enemy))
 
                                 if int(T[j][10]) == T[j][4]:
                                     
@@ -687,9 +702,22 @@ def pohyb_lvl1():
 
         
                 
-                
-                if E[i][8] <= 0:
-                    E[i][2] = False
+                if E[i][2]:
+                    if E[i][8] <= 0:
+                        randomS = random.randint(1,6)
+                        if randomS == 1:
+                            pygame.mixer.Sound.play(deadsound1)
+                        elif randomS == 2:
+                            pygame.mixer.Sound.play(deadsound2)
+                        elif randomS == 3:
+                            pygame.mixer.Sound.play(deadsound3)
+                        elif randomS == 4:
+                            pygame.mixer.Sound.play(deadsound4)
+                        elif randomS == 5:
+                            pygame.mixer.Sound.play(deadsound5)
+                        elif randomS == 6:
+                            pygame.mixer.Sound.play(deadsound6)
+                        E[i][2] = False
                 
 
 
@@ -874,10 +902,11 @@ def pohyb_lvl1():
                 for i in range(Enemy):
                     if B[b][12]:
                         if (E[i][0] - 25) <= B[b][0] <= (E[i][0] + 25) and (E[i][1] - 25) <= B[b][1] <= (E[i][1] + 25):
+                            enemyinstanthelth = E[i][8]
                             B[b][12] = False
                             E[i][8] -= T[B[b][13]][5]
-                            print("tač", b, "dmg: ",T[B[b][13]][5])
-                            T[B[b][13]][9] += 1
+                            
+                            T[B[b][13]][9] += T[B[b][13]][5]
                             
                         #B.pop(b)
 
@@ -900,7 +929,7 @@ def pohyb_lvl1():
 
 
             for i in range(len(E)):
-                if move == True:
+                if move:
                     if E[i][2] == False:
                         dead += 1 
 
@@ -917,13 +946,16 @@ def pohyb_lvl1():
                                 Enemy = 3
                                 wave += 1
                             elif wave == 3:
-                                Enemy = 5
+                                Enemy = 4
                                 wave += 1
                             elif wave == 4:
-                                Enemy = 7
+                                Enemy = 5
                                 wave += 1
                             elif wave > 4:
                                 wave += 1 
+                                Enemy = 6
+                            if wave % 5 == 0:
+                                EnemyHealth += 1
                             for j in range(len(T)):
                                 T[j][8] = 0
                             

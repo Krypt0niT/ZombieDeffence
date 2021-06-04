@@ -136,7 +136,7 @@ def pohyb_lvl1():
     start = 0
 
     health = 100
-    money = 100000
+    money = 150
 
     cenaT11 = 100
     cenaT21 = 250
@@ -604,7 +604,7 @@ def pohyb_lvl1():
                     gameScreen.blit(pygame.transform.rotate(Tblit[j][1],T[i][8]),((T[i][0] - 25),(T[i][1] - 45)))
 
         if len(T) > 0:
-            cenaT11 = (len(T) * 100)
+            cenaT11 = ((1 + len(T)) * 100)
             textcenaT11 = WHITEFont.render(" %s" % cenaT11, True, (255,255,255))
 
         
@@ -718,6 +718,7 @@ def pohyb_lvl1():
                         elif randomS == 6:
                             pygame.mixer.Sound.play(deadsound6)
                         E[i][2] = False
+                        money += 50
                 
 
 
@@ -902,7 +903,6 @@ def pohyb_lvl1():
                 for i in range(Enemy):
                     if B[b][12]:
                         if (E[i][0] - 25) <= B[b][0] <= (E[i][0] + 25) and (E[i][1] - 25) <= B[b][1] <= (E[i][1] + 25):
-                            enemyinstanthelth = E[i][8]
                             B[b][12] = False
                             E[i][8] -= T[B[b][13]][5]
                             
@@ -953,7 +953,7 @@ def pohyb_lvl1():
                                 wave += 1
                             elif wave > 4:
                                 wave += 1 
-                                Enemy = 6
+                                Enemy += 1
                             if wave % 5 == 0:
                                 EnemyHealth += 1
                             for j in range(len(T)):

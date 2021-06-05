@@ -14,7 +14,7 @@ def pohyb_lvl1():
     gameScreen = pygame.display.set_mode()
     clock = pygame.time.Clock()
 
-    bg = pygame.image.load("hra_template.png")
+    bg = pygame.image.load("images/other/hra_template.png")
     #font
     WHITEFont = pygame.font.Font("Dirty_War.otf", 50)
     whitefont = pygame.font.Font("Dirty_War.otf", 20)

@@ -1,5 +1,5 @@
 import pygame
-from pohyb_lvl1 import pohyb_lvl1
+from hra import hra
 import time
 
 pygame.init()
@@ -20,6 +20,6 @@ while run:
         if event.type == pygame.QUIT:
             run = False
     if kolo:
-        pohyb_lvl1()
+        hra()
 pygame.quit()
 quit()

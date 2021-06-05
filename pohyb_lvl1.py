@@ -119,9 +119,9 @@ def pohyb_lvl1():
         if randomZ == 1:
             E.append([1367, -100, True, 1, 2, 0, False, zombie1_1, 2])
         if randomZ == 2:
-            E.append([1367, -100, True, 1, 2, 0, False, zombie1_2, 1])
+            E.append([1367, -100, True, 1, 2, 0, False, zombie1_2, 2])
         if randomZ == 3:
-            E.append([1367, -100, True, 1, 2, 0, False, zombie1_3, 1.5])
+            E.append([1367, -100, True, 1, 2, 0, False, zombie1_3, 2])
         if randomZ == 4:
             E.append([1367, -100, True, 1, 2, 0, False, zombie1_4, 2])
         if randomZ == 5:
@@ -218,12 +218,14 @@ def pohyb_lvl1():
     deadsound5 = pygame.mixer.Sound("sounds/zombie/dead5.mp3")
     deadsound6 = pygame.mixer.Sound("sounds/zombie/dead6.mp3")
 
+    BGmusic = pygame.mixer.music.load("sounds/music/music.mp3")
+    pygame.mixer.music.set_volume(0.2)
     playbutton = pygame.image.load("images/other/play.png")
     playbutton1 = pygame.image.load("images/other/play2.png")
 
     
 
-
+    pygame.mixer.music.play(-1 , 0.0)
 
     while run:
         
@@ -901,13 +903,23 @@ def pohyb_lvl1():
            # print(len(B))
             for b in range(len(B)):
                 for i in range(Enemy):
+                    localzombieHP = E[i][8]
+                    localturretdmg = T[B[b][13]][5] 
                     if B[b][12]:
-                        if (E[i][0] - 25) <= B[b][0] <= (E[i][0] + 25) and (E[i][1] - 25) <= B[b][1] <= (E[i][1] + 25):
-                            B[b][12] = False
-                            E[i][8] -= T[B[b][13]][5]
-                            
-                            T[B[b][13]][9] += T[B[b][13]][5]
-                            
+                        if E[i][2]:
+                            if (E[i][0] - 25) <= B[b][0] <= (E[i][0] + 25) and (E[i][1] - 25) <= B[b][1] <= (E[i][1] + 25):
+                                B[b][12] = False
+                                
+                                print(localzombieHP,localturretdmg)
+                                localzombieHP -= localturretdmg
+                                print(localzombieHP,localturretdmg)
+                                print(".")
+
+                                E[i][8] = localzombieHP
+
+
+                                T[B[b][13]][9] += T[B[b][13]][5]
+                                
                         #B.pop(b)
 
 

@@ -9,8 +9,6 @@ pygame.display.set_caption("Zombie Deffence")
 icon = pygame.image.load("images/zombie/zombie_lvl1_1.png")
 pygame.display.set_icon(icon)
 
-
-Enemy = 2
 kolo = True
 run = True
 over = False

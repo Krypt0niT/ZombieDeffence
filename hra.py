@@ -998,16 +998,4 @@ def hra(over):
                             spustenie = 0
 
 
-
-            
-
-            
-
-
-
-            
-            
-
-
-
         pygame.display.flip()

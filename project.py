@@ -13,13 +13,16 @@ pygame.display.set_icon(icon)
 Enemy = 2
 kolo = True
 run = True
-
+over = False
 
 while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
     if kolo:
-        hra()
+
+        hra(over)
+        break
+
 pygame.quit()
 quit()

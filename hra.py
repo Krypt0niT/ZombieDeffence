@@ -4,17 +4,17 @@ import random
 import math
 
 
-from pygame.constants import K_LEFT
-from pygame.rect import Rect
-def hra():
+
+def hra(over):
     
 
     
     pygame.init()
-    gameScreen = pygame.display.set_mode()
+    gameScreen = pygame.display.set_mode((1920, 1080))
     clock = pygame.time.Clock()
 
     bg = pygame.image.load("images/other/hra_template.png")
+    ds = pygame.image.load("images/other/dead_screen.png")
     #font
     WHITEFont = pygame.font.Font("Dirty_War.otf", 50)
     whitefont = pygame.font.Font("Dirty_War.otf", 20)
@@ -135,7 +135,7 @@ def hra():
     uhol = 0
     start = 0
 
-    health = 100
+    health = 1
     money = 150
 
     cenaT11 = 100
@@ -230,7 +230,8 @@ def hra():
     while run:
         
         clock.tick(gameSPEED)
-        gameScreen.blit(bg, (0, 0))
+        if over == False:
+            gameScreen.blit(bg, (0, 0))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -243,8 +244,8 @@ def hra():
         gameScreen.blit(pygame.transform.rotate(turret11,0),(185,63))
         #texty
 
-        textHelth = WHITEFont.render(("%s" % health) , True, (255,255,255))
-        textMoney = WHITEFont.render(("%s" % money) , True, (255,255,255))
+        textHelth = WHITEFont.render(("%s health" % health) , True, (255,255,255))
+        textMoney = WHITEFont.render(("%s money" % money) , True, (255,255,255))
 
 
         gameScreen.blit(textHelth, (1600, 1000))
@@ -637,10 +638,20 @@ def hra():
                     move = True
 
 
-        
+        if over:
+            move = False
+            gameScreen.blit(ds, (0, 0))
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                pygame.quit()
+                quit()
         
         test = 0
         if move:
+
+            
+
+
+
 
             
 
@@ -860,9 +871,20 @@ def hra():
                         E[i][5] = -90
 
             for i in range(Enemy):
-                if E[i][0]  == 400:
-                    health -= 1
-                    E[i][2] = False
+                if E[i][2]:
+                    if E[i][0]  == 400:
+                        health -= 1
+                        E[i][2] = False
+                        if health <= 0:
+                            over = True
+                            
+
+
+                                
+
+               
+
+
             distance = 0
             for i in range(len(B)):
                 if B[i][12]:

@@ -135,7 +135,7 @@ def hra(over):
     uhol = 0
     start = 0
 
-    health = 1
+    health = 100
     money = 150
 
     cenaT11 = 100

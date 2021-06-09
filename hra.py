@@ -681,7 +681,7 @@ def hra(over):
 
                             if T[j][10] <= T[j][4]:
                                 T[j][10] += float(1 / float(Enemy))
-
+                                round(T[j][10])
                                 if int(T[j][10]) == T[j][4]:
                                     
                                     pygame.mixer.Sound.play(shoot)

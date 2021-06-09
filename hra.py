@@ -922,7 +922,7 @@ def hra(over):
                 B[i][1] = y
                
 
-           # print(len(B))
+
             for b in range(len(B)):
                 for i in range(Enemy):
                     localzombieHP = E[i][8]
@@ -931,11 +931,8 @@ def hra(over):
                         if E[i][2]:
                             if (E[i][0] - 25) <= B[b][0] <= (E[i][0] + 25) and (E[i][1] - 25) <= B[b][1] <= (E[i][1] + 25):
                                 B[b][12] = False
-                                
-                                print(localzombieHP,localturretdmg)
                                 localzombieHP -= localturretdmg
-                                print(localzombieHP,localturretdmg)
-                                print(".")
+
 
                                 E[i][8] = localzombieHP
 

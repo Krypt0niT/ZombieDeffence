@@ -973,23 +973,12 @@ def hra(over):
                             B.clear()
                             for j in range(len(T)):
                                 T[j][7] = False
-                            if wave == 1:
-                                Enemy = 2
-                                wave += 1
-                            elif wave == 2:
-                                Enemy = 3
-                                wave += 1
-                            elif wave == 3:
-                                Enemy = 4
-                                wave += 1
-                            elif wave == 4:
-                                Enemy = 5
-                                wave += 1
-                            elif wave > 4:
-                                wave += 1 
+                            if wave >= 1:
                                 Enemy += 1
+                                wave += 1
+                        
                             if wave % 5 == 0:
-                                EnemyHealth += 1
+                                EnemyHealth += 2
                             for j in range(len(T)):
                                 T[j][8] = 0
                             
